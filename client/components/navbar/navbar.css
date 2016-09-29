@@ -1,0 +1,26 @@
+/**.element {
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+.md-toolbar-tools {
+  background-color: #004D71;
+  color: white;
+}
+
+.no-padding{
+  margin: 0;
+  padding: 7px;
+  color: #000;
+  text-align: left
+}
+
+ 
+asas
+asasas
+*/
+#loading-bar .bar {
+  position: relative;
+}
+

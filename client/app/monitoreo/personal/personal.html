@@ -1,0 +1,66 @@
+<md-content laout="column" flex >
+<div layout="row" layout-align="start start">
+      <md-input-container>
+        <label>Buscar</label>
+        <input ng-model="buscar">
+      </md-input-container>
+</div>
+<div>
+    <md-table-container>
+        <table md-table ng-model="pe._selected" md-row-select="pe._selection" multiple="pe._multiSelection" md-progress="pe._promise">
+            <thead md-head md-order="pe._order">
+                <tr md-row>
+                    <th md-column md-order-by="id.cdgpe" ><span>Código</span></th>
+                    <th md-column md-desc md-order-by="nombre"><span>Nombre</span></th>
+                    <th md-column md-order-by="coordinacion"><span>Coordinación</span></th>
+                    <th md-column md-order-by="activo"><span>Estatus</span></th>
+                    <th md-column md-order-by="puesto"><span>Puesto</span></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                 <tr md-row md-select="monitoreo" md-select-id="id.cdgpe" md-auto-select="pe._autoSelection" md-row-select="pe._rowSelection" md-on-select="pe._onSelect" ng-repeat="monitoreo in pe._lista | orderBy: pe._order | filter:buscar ">
+                    <td md-cell>
+                	    <div ng-if="monitoreo.id.cdgpe !== null">
+                		    {{monitoreo.id.cdgpe}}
+                	    </div>
+                	    <div ng-if="monitoreo.id.cdgpe === null">Desconocido</div>
+                    </td>
+                    <td md-cell>
+                	    <div ng-if="monitoreo.nombre !== null">
+                		    {{monitoreo.nombre}}
+                	    </div>
+                	    <div ng-if="monitoreo.nombre === null">Desconocido</div>
+                    </td>
+                    <td md-cell>
+                	    <div ng-if="monitoreo.coordinacion !== null">
+                		    {{monitoreo.coordinacion}}
+                	    </div>
+                	    <div ng-if="monitoreo.coordinacion === null">Desconocido</div>
+                    </td>
+                    <td md-cell>
+                	    <div ng-if="monitoreo.activo !== null">
+                		    {{monitoreo.activo}}
+                	    </div>
+                	    <div ng-if="monitoreo.activo === null">Desconocido</div>
+                    </td>
+                    <td md-cell>
+                	    <div ng-if="monitoreo.puesto !== null">
+                		    {{monitoreo.puesto}}
+                	    </div>
+                	    <div ng-if="monitoreo.puesto === null">Desconocido</div>
+                    </td>
+                 </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-boundary-links="pe._boundary" 
+                         md-limit-options="pe._limitOption" 
+                         md-label="{{pe._label}}" 
+                         md-limit="pe._limit" 
+                         md-total="{{pe._total}}" 
+                         md-page="pe._page" 
+                         md-page-select="pe._selectedPage" 
+                         ng-disabled="pe._disable" 
+                         md-on-paginate="pe._onPage"></md-table-pagination>
+</div>
+</md-content>

@@ -1,0 +1,18 @@
+#content{
+  margin: 0;padding: 0;
+}
+#main-card{
+  background: white;margin: 0;
+}
+
+
+/*.left-color{*/
+  /*background: rgba(0, 70, 102, 0.23);*/
+/*}*/
+
+/*.right-color{*/
+  /*background: #e8e8e8;*/
+/*}*/
+#input md-input-container .md-errors-spacer{
+  min-height: 0 !important;
+}

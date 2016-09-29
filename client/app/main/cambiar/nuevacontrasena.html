@@ -1,0 +1,38 @@
+<div id=back>
+    <md-card id=card_login md-whiteframe='24'>
+            <div id=logo_bar_container>
+                <img class=md-card-image id=logo_bar ng-src='assets/images/yunius.png'  alt='Logo'/>
+            </div>
+            <md-card-content id=card_login_container>
+                <form ng-submit='ac.doRecuperar($event)' name="formConf">
+                    <md-input-container class=md-block flex-gt-sm=''>
+                        <label> Clave enviada al correo electrónico </label>
+                        <input id=inputCveEmail name='cveEmail' type='text' required autofocus ng-model='ac.recuperar.cveEmail'>
+                        <div ng-messages="formConf.cveEmail.$error" >
+                            <div ng-message="required" ng-show="formConf.cveEmail.$invalid">La clave es obligatoria.</div>
+                        </div>                        
+                    </md-input-container>
+                    <md-input-container class=md-block flex-gt-sm=''>
+                        <label> Nueva contraseña</label>
+                        <input id=inputNPasswordUsr name='nClaveUs' type='password' required ng-model='ac.recuperar.nClaveUs'>
+                        <div ng-messages="formConf.nClaveUs.$error" >
+                            <div ng-message="required" ng-show="formConf.nClaveUs.$invalid">La contraseña es obligatoria.</div>
+                        </div>                        
+                    </md-input-container>
+                    <md-input-container class=md-block flex-gt-sm=''>
+                        <label> Confirmación de nueva contraseña</label>
+                        <input id=inputCNPasswordUsr name='cNClaveUs' type='password' required ng-model='ac.recuperar.cNClaveUs'>
+                    </md-input-container> 
+                    <div ng-show="ac.recuperar.nClaveUs != ac.recuperar.cNClaveUs" style="color:red; position:relative; top:-43px">
+                    ¡Las contraseñas no coinciden!
+                    </div>                   
+                    
+                    <md-button class="btnAzuly dosBotones" type='submit' ng-disabled="formConf.$invalid"> Aceptar</md-button>
+                    <md-button class="btnAzuly dosBotones" ng-href="/"type='button'> Cancelar</md-button>
+
+                </form>
+            </md-card-content>
+    </md-card>
+</div>
+
+

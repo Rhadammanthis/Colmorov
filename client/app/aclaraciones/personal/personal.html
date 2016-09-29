@@ -1,0 +1,56 @@
+<md-content laout="column" flex >
+<div layout="row" layout-align="start start">
+      <md-input-container>
+        <label>Buscar</label>
+        <input ng-model="buscar">
+      </md-input-container>
+</div>
+<div>
+    <md-table-container>
+        <table md-table ng-model="pe._selected" md-row-select="pe._selection" multiple="pe._multiSelection" md-progress="pe._promise">
+            <thead md-head md-order="pe._order">
+                <tr md-row>
+                    <th md-column ><span>Tipo</span></th>
+                        <th md-column ><span>Estado</span></th>
+                        <th md-column ><span>Fecha</span></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                 <tr md-row md-select="aclaracion" y md-auto-select="pe._autoSelection" ng-click="pe.showMessages(aclaracion)" md-row-select="pe._rowSelection" md-on-select="pe._onSelect" ng-repeat="aclaracion in pe._lista | orderBy: pe._order | filter:buscar ">
+                    <td md-cell>
+                            <div ng-if="aclaracion.tipo == 'A'">
+                                Aclaración
+                            </div>
+                            <div ng-if="aclaracion.tipo == 'C'">
+                                Comentario
+                            </div>
+                        </td>
+                        <td md-cell>
+                            <div ng-if="aclaracion.estado == 'A'">
+                                Activa
+                            </div>
+                            <div ng-if="aclaracion.estado == 'C'">
+                                Cerrado
+                            </div>
+                            <div ng-if="aclaracion.estado == 'E'">
+                                Espera
+                            </div>
+                        </td>
+                        <td md-cell>
+                            {{aclaracion.fregistro | date:'yyyy-MM-dd HH:mm:ss' }} <!--'yyyy-MM-dd HH:mm:ss'-->
+                        </td>
+                 </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-boundary-links="pe._boundary" 
+                         md-limit-options="pe._limitOption" 
+                         md-label="{{pe._label}}" 
+                         md-limit="pe._limit" 
+                         md-total="{{pe._total}}" 
+                         md-page="pe._page" 
+                         md-page-select="pe._selectedPage" 
+                         ng-disabled="pe._disable" 
+                         md-on-paginate="pe._onPage"></md-table-pagination>
+</div>
+</md-content>

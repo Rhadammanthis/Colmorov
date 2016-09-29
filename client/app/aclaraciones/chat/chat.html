@@ -1,0 +1,59 @@
+<md-content layout-padding id="content">
+
+  <md-card id="main-card">
+    <md-card-content>
+
+      <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+      <div ng-if="mensajes.length == 0 && !loading">
+        No hay mensajes.
+      </div>
+
+      <div ng-repeat="mensaje in mensajes | orderBy : 'fecha'" layout="row" layout-align="{{mensaje.registra == userType ? 'start center' : 'end center'}}">
+        <md-card flex="90" ng-class=" mensaje.registra != userType ? 'left-color' : 'right-color'">
+          <md-card-header>
+            <md-card-avatar>
+                <md-icon ng-style="{'background-color': mensaje.registra == userType ? '#004D71' :'ligthgray'}" aria-hidden="true" md-svg-icon="/assets/icons/ic_person_white_24px.svg">
+                </md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-title">{{mensaje.registra == 'C' ? 'Cliente' : 'Financiadora'}}</span>
+              <span class="md-subhead">{{mensaje.fecha  | date:'yyyy-MM-dd HH:mm' }}</span>
+            </md-card-header-text>
+            <md-button class="md-icon-button" ng-click="acla.toogleEditMensaje(mensaje)"  ng-if="acla.canEditMessage(mensaje, $index)" aria-label="editar">
+              <md-icon md-svg-icon="/assets/icons/ic_mode_edit_black_24px.svg"></md-icon>
+            </md-button>
+          </md-card-header>
+
+          <md-card-content>
+            <p ng-if="!mensaje.editing">
+              {{mensaje.texto}}
+            </p>
+            <div ng-if="mensaje.editing" layout="row" layout-xs="column">
+              <md-input-container flex="100" >
+                <label>Mensaje</label>
+                <input ng-model="mensaje._texto">
+              </md-input-container>
+              <md-button class="md-primary" ng-click="acla.editMensaje(mensaje)" ng-disabled="mensaje._texto == ''" >Enviar</md-button>
+              <md-button class="md-accent" ng-click="acla.toogleEditMensaje(mensaje) ">Cancelar</md-button>
+            </div>
+          </md-card-content>
+        </md-card>
+      </div>
+    </md-card-content>
+
+    <md-card-actions ng-hide="estado == 'C'" layout-align="end center">
+      <md-card flex="100" layout="column" style="background: #e8e8e8" >
+        <md-card-content id="input" layout="row" layout-xs="column" loyout-sm="column" layout-align="space-around center">
+          <md-input-container md-no-float flex="80" >
+            <textarea  id="input-a" ng-model="comment" placeholder="Mensaje" style="border-color: transparent"></textarea>
+          </md-input-container>
+          <md-button class="md-primary" ng-click="acla.doMessage()" ng-disabled="comment == ''">Enviar</md-button>
+          <md-button class="md-accent" ng-click="acla.goAclaraciones()" >Cancelar</md-button>
+        </md-card-content>
+      </md-card>
+    </md-card-actions>
+  </md-card>
+
+</md-content layout-padding>

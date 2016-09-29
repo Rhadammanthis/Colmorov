@@ -1,0 +1,77 @@
+
+<div class=toolbardemoBasicUsage ng-cloak>
+
+  <md-toolbar class="grey" ng-if="nav._$rootScope.toolbarMode === 2">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="nav.toggleLeft()">
+        <md-icon md-svg-icon="../../assets/icons/ic_menu_white_24px.svg"></md-icon>
+      </md-button>
+      <h1>
+        <span>{{nav._$rootScope.title}}</span>
+      </h1>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+	<md-toolbar ng-if="nav._$rootScope.toolbarMode === 0">
+		<div class="md-toolbar-tools">
+			<h2>
+				<span>{{nav._$rootScope.title}}</span>
+			</h2>
+			<span flex></span>
+			<md-button  ng-click="nav.goToSignUp()">Sign up!</md-button>
+			<md-button  ng-click="nav.goToLogIn()">Log in!</md-button>
+		</div>
+  </md-toolbar>
+
+	  <md-toolbar class="grey" ng-if="nav._$rootScope.toolbarMode === 1">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="nav.goBack()">
+        <md-icon md-svg-icon="../../assets/icons/ic_arrow_back_white_24px.svg"></md-icon>
+      </md-button>
+      <h1>
+        <span>{{nav._$rootScope.title}}</span>
+      </h1>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+	<md-toolbar ng-if="nav._$rootScope.toolbarMode === 3">
+		<div class="md-toolbar-tools">
+			<h2>
+				<span>{{nav._$rootScope.title}}</span>
+			</h2>
+			<span flex></span>
+			<md-button  ng-click="nav.logOut()">Log out</md-button>
+		</div>
+  </md-toolbar>
+
+	<div id="loading-bar-container"></div>
+  
+	<md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id='left'>
+		<md-toolbar class="md-theme-light">
+			<h1 class=md-toolbar-tools> Men&uacute;</h1>
+			<md-content layout-padding=''>
+				<form>
+					<md-input-container>
+						<md-button  class=md-primary ng-href="/movies" target='_self' style='color: #000'> Movies</md-button>
+						<br>
+						<md-button class='no-padding md-primary' ng-href="/movies" target='_self' style='color: #000'> Home</md-button>
+						<div ng-show="nav.$rootScope.show===2">
+							<md-button class=md-primary ng-click='nav.personal()' target='_self' style='color: #000'> MONITOREO</md-button>
+							<br>
+							<md-button class=md-primary ng-href='{{nav.aclaracionesURL}}' target='_self' style='color: #000'> ACLARACIONES</md-button>
+							<br>
+						</div>
+						<div ng-show="nav.$rootScope.show===1">
+							<md-button class=md-primary ng-click='nav.aclaracionescl()' target='_self' style='color: #000'> Aclaraciones</md-button>
+							<br>
+						</div>
+						<md-button class=md-primary ng-click='nav.logout()' target='_self' style='color: #000'> Salir</md-button>
+					</md-input-container>
+				</form>
+			</md-content>
+		</md-toolbar>
+	</md-sidenav>
+</div>
+

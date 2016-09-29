@@ -1,0 +1,48 @@
+<div id=back>
+    <md-card id=card_login_registro md-whiteframe='24'>
+            <div id=logo_bar_container>
+                <img class=md-card-image id=logo_bar ng-src='assets/images/yunius.png'  alt='Logo'/>
+            </div>
+            <md-card-content id=card_login_container>
+                <form ng-submit='lic.logUserIn($event)' name="formregistro">
+                
+                <div layout="row" layout-xs="column">
+                    <div flex="100">
+                        <div flex="95">
+                            <md-input-container class=md-block flex-gt-sm='' flex>
+                                <label> User Name</label>
+                                <input id=inputNom name='nombre'  type='text'  required  autofocus  ng-model='lic.userData.userName'>
+                        <div ng-messages="formregistro.nombre.$error" >
+                            <div ng-message="required" ng-show="formregistro.nombre.$invalid">Field is not optional</div>
+                        </div>
+                            </md-input-container>
+                            <md-input-container class=md-block flex-gt-sm=''>
+                                <label> Password</label>
+                                <input id=inputPasswordUsrR name='claveUsR' type='password' required ng-model='lic.userData.password'>
+                                <div ng-messages="formregistro.claveUsR.$error" >
+                                    <div ng-message="required" ng-show="formregistro.claveUsR.$invalid">Field is not optional</div>
+                                </div>                                
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout="row" layout-xs="column">
+                    <div flex="100">
+                        <div flex="95">
+                            <md-button class="btnAzuly btnLargo" type='submit' ng-disabled="formregistro.$invalid"> Log me in! </md-button>
+                        </div>
+                    </div>
+                    <div flex="100">
+                        <div flex="95">
+                            <md-button class="btnAzuly btnLargo" ng-href="/"> Cancel </md-button>
+                        </div>
+                    </div>
+                    <div layout="row" layout-sm="column" layout-align="space-around" ng-if="lic.logingIn">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</div>

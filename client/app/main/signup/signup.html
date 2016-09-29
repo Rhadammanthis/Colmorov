@@ -1,0 +1,69 @@
+<div id=back>
+    <md-card id=card_login_registro md-whiteframe='24'>
+            <div id=logo_bar_container>
+                <img class=md-card-image id=logo_bar ng-src='assets/images/yunius.png'  alt='Logo'/>
+            </div>
+            <md-card-content id=card_login_container>
+                <form ng-submit='suc.registerNewUser($event)' name="formregistro">
+                
+                <div layout="row" layout-xs="column">
+                    <div flex="100">
+                        <div flex="95">
+                            <md-input-container class=md-block flex-gt-sm='' flex>
+                                <label> User Name</label>
+                                <input id=inputNom name='nombre'  type='text'  required  autofocus  ng-model='suc.userData.userName'>
+                        <div ng-messages="formregistro.nombre.$error" >
+                            <div ng-message="required" ng-show="formregistro.nombre.$invalid">Field is not optional</div>
+                        </div>
+                            </md-input-container>
+                            <md-input-container class=md-block flex-gt-sm='' flex>
+                                <label> Name</label>
+                                <input id=inputAp name='apellidos'  type='text'  required  autofocus  ng-model='suc.userData.name'>
+                                <div ng-messages="formregistro.apellidos.$error" >
+                                    <div ng-message="required" ng-show="formregistro.apellidos.$invalid">Field is not optional</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class=md-block flex-gt-sm='' flex>
+                                <label> E-Mail</label>
+                                <input id=inputCorreo name='correo'  type='email'  required  autofocus  ng-model='suc.userData.email'>
+                                <div ng-messages="formregistro.correo.$error" >
+                                    <div ng-message="required" ng-show="formregistro.correo.$invalid">E-mail is not valid</div>
+                                </div>                                
+                            </md-input-container>
+                            <md-input-container class=md-block flex-gt-sm=''>
+                                <label> Password</label>
+                                <input id=inputPasswordUsrR name='claveUsR' type='password' required ng-model='suc.userData.password'>
+                                <div ng-messages="formregistro.claveUsR.$error" >
+                                    <div ng-message="required" ng-show="formregistro.claveUsR.$invalid">Field is not optional</div>
+                                </div>                                
+                            </md-input-container>
+                            <md-input-container class=md-block flex-gt-sm=''>
+                                <label> Confirm password</label>
+                                <input id=inputCPasswordUsrR name='cclaveUsR'  type='password'  required  autofocus  ng-model='suc.passwordC'>
+                            </md-input-container>
+                            <div ng-show="suc.userData.password != suc.passwordC" style="color:red; position:relative; top:-43px">
+                            Passwords do not match!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout="row" layout-xs="column">
+                    <div flex="100">
+                        <div flex="95">
+                            <md-button class="btnAzuly btnLargo" type='submit' ng-disabled="formregistro.$invalid"> Sign me up! </md-button>
+                        </div>
+                    </div>
+                    <div flex="100">
+                        <div flex="95">
+                            <md-button class="btnAzuly btnLargo" ng-href="/"> Cancel </md-button>
+                        </div>
+                    </div>
+                    <div layout="row" layout-sm="column" layout-align="space-around" ng-if="suc.signingUp">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</div>
