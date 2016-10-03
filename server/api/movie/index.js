@@ -10,7 +10,6 @@ var router = express.Router();
 
 var idArray = [];
 var movies = null;
-var movie = null;
 
 var response;
 
@@ -32,114 +31,121 @@ router.post('/', function(req, resp)
 
     idArray = req.body.id;
 
-    //recursive request of as many objects there are in idArray.
-    requestMovieInfo(0);
+    //async info fetch of as many items there are in the body of the request
+    async.map(idArray, fetchMovieInfo, function(err, results){
+        if ( err){
+        console.log('error');
+        } else {
+            console.log('no error');
+            
+            response.json(results);
+        }
+    });
 
 });
 
-function requestMovieInfo(index)
+function fetchMovieInfo(index,cb)
 {
-    console.log('Index ' + index);
-    console.log('Array length ' + idArray.length);
-    if(index == idArray.length)
-    {
-        response.json(movies);
-    }
-    else
-    {
-        movie = {};
-        var id = idArray[index];
+    var movie = {};
+    var id = index;
 
-        var infoOptions = { method: 'GET',
-            url: 'http://api.themoviedb.org/3/movie/' + id,
+    var infoOptions = { method: 'GET',
+        url: 'http://api.themoviedb.org/3/movie/' + id,
+        qs: { api_key: '531aec356bbd54359474847e57c79986' },
+        headers: 
+        {'cache-control': 'no-cache' } 
+    };
+
+    console.log('Requesting info with id: ' + id);
+
+    request(infoOptions, function (error, response, movieInfo) {
+        
+        if (error) {
+            cb(error)
+        }
+
+        var infoData = JSON.parse(movieInfo);
+
+        movie.backdrop_path = infoData.backdrop_path;
+        movie.original_title = infoData.original_title;
+        movie.overview = infoData.overview;
+        movie.poster_path = infoData.poster_path;
+        movie.release_date = infoData.release_date;
+        movie.id = infoData.id;
+        
+        var creditsOptions = { method: 'GET',
+            url: 'http://api.themoviedb.org/3/movie/'+ id +'/credits',
             qs: { api_key: '531aec356bbd54359474847e57c79986' },
             headers: 
             {'cache-control': 'no-cache' } 
         };
 
-        console.log('Requesting info with id: ' + id);
+        console.log('Requesting credits with id: ' + id);
 
-        request(infoOptions, function (error, response, movieInfo) {
-            
-            if (error) throw new Error(error);
+        request(creditsOptions, function (error, response, credits) {
 
-            var infoData = JSON.parse(movieInfo);
+            if (error) {
+                cb(error)
+            }
 
-            movie.backdrop_path = infoData.backdrop_path;
-            movie.original_title = infoData.original_title;
-            movie.overview = infoData.overview;
-            movie.poster_path = infoData.poster_path;
-            movie.release_date = infoData.release_date;
-            movie.id = infoData.id;
-            
-            var creditsOptions = { method: 'GET',
-                url: 'http://api.themoviedb.org/3/movie/'+ id +'/credits',
+            var creditsData = JSON.parse(credits);
+
+            movie.cast = [];
+            movie.crew = [];
+
+            for(var i in creditsData.cast){
+                var cast = creditsData.cast[i];
+                movie.cast.push(cast);
+            }
+
+            for(var i in creditsData.crew){
+                var crew = creditsData.crew[i];
+                movie.crew.push(crew);
+            }
+
+            var imagesOptions = { method: 'GET',
+                url: 'http://api.themoviedb.org/3/movie/'+ id +'/images',
                 qs: { api_key: '531aec356bbd54359474847e57c79986' },
                 headers: 
                 {'cache-control': 'no-cache' } 
             };
 
-            console.log('Requesting credits with id: ' + id);
+            console.log('Requesting images with id: ' + id);
 
-            request(creditsOptions, function (error, response, credits) {
-
-                if(error) throw new Error(error);
-
-                var creditsData = JSON.parse(credits);
-
-                movie.cast = [];
-                movie.crew = [];
-
-                for(var i in creditsData.cast){
-                    var cast = creditsData.cast[i];
-                    movie.cast.push(cast);
+            request(imagesOptions, function (error, response, images){
+                
+                if (error) {
+                    cb(error)
                 }
 
-                for(var i in creditsData.crew){
-                    var crew = creditsData.crew[i];
-                    movie.crew.push(crew);
+                var imagesData = JSON.parse(images);
+        
+                movie.backdrops = [];
+                movie.posters = [];
+
+                for(var i in imagesData.backdrops){
+                    var backdrop = imagesData.backdrops[i];
+                    movie.backdrops.push(backdrop);
                 }
 
-                var imagesOptions = { method: 'GET',
-                    url: 'http://api.themoviedb.org/3/movie/'+ id +'/images',
-                    qs: { api_key: '531aec356bbd54359474847e57c79986' },
-                    headers: 
-                    {'cache-control': 'no-cache' } 
-                };
+                for(var i in imagesData.backdrops){
+                    var poster = imagesData.posters[i];
+                    movie.posters.push(poster);
+                }
 
-                request(imagesOptions, function (error, response, images){
-                    
-                    if(error) throw new Error(error);
+                if(movie.hasOwnProperty('error')){
+                    cb(movie.error_description)
+                }
+                else{
 
-                    var imagesData = JSON.parse(images);
-            
-                    movie.backdrops = [];
-                    movie.posters = [];
+                    console.log('Fetched: ' + movie.original_title);
 
-                    for(var i in imagesData.backdrops){
-                        var backdrop = imagesData.backdrops[i];
-                        movie.backdrops.push(backdrop);
-                    }
-
-                    for(var i in imagesData.backdrops){
-                        var poster = imagesData.posters[i];
-                        movie.posters.push(poster);
-                    }
-
-                    if(movie.hasOwnProperty('error')){
-                        console.log(movie.error_description);
-                        res.json(movie);
-                    }
-                    else{
-                        movies.push(movie);
-
-                        requestMovieInfo(index+=1);
-                    }
-                    
-                });
+                    cb(null, movie);
+                }
+                
             });
         });
-    }
+    });
 }
 
 module.exports = router;
