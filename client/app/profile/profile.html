@@ -1,8 +1,8 @@
 <div id="loading-bar-container"></div>
 <md-content class="md-padding" >
     <div flex-xs layout-xs="column" flex-sm layout-sm="column" layout="row">
-      <md-card flex-gt-sm="25" flex="100" ng-repeat="movie in moviesCtrl.movies" ng-if="moviesCtrl.movies.length > 0" ng-click="moviesCtrl.loadSingle(movie)">
-        <img ng-src="{{moviesCtrl.completeImagePath(movie.backdrop_path)}}" class="md-card-image" alt="Washed Out">
+      <md-card flex-gt-sm="25" flex="100" ng-repeat="movie in pfc.movies" ng-if="pfc.movies.length > 0" ng-click="pfc.loadSingle(movie)">
+        <img ng-src="{{pfc.completeImagePath(movie.backdrop_path)}}" class="md-card-image" alt="Washed Out">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{movie.original_title}}</span>
@@ -15,7 +15,7 @@
           </p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button" aria-label="Favorite" ng-click="moviesCtrl.like()">
+          <md-button class="md-icon-button" aria-label="Favorite" ng-click="pfc.like()">
             <md-icon md-svg-icon="assets/images/icons/ic_favorite_black_24px.svg"></md-icon>
           </md-button>
           <md-button class="md-icon-button" aria-label="Settings">

@@ -288,7 +288,12 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
      * @return {String} - el usuario
      */
     getUser() {
-      return JSON.parse($cookies.get('user'));
+      var userString = null;
+      userString = $cookies.get('user');
+      if(userString)
+        return JSON.parse($cookies.get('user'));
+      else
+        return null;
     },
 
     /**

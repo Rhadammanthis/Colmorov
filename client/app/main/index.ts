@@ -5,7 +5,6 @@ const ngRoute = require('angular-route');
 
 import routing from './main.routes';
 import cambiar from './cambiar';
-import inicio from './inicio/inicio.controller';
 import recuperar from './recuperar';
 import home from './home/home.controller';
 import signup from './signup/signup.controller';
@@ -14,7 +13,6 @@ import login from './login/login.controller';
 export default angular.module('colmorovApp.main', [
     ngRoute,
 
-    inicio,
     home,
     signup,
     login

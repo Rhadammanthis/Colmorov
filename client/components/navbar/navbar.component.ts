@@ -73,7 +73,7 @@ export class NavbarComponent extends Base{
   }
 
   logOut(){
-    // this.$mdSidenav('left').close();
+    this.$mdSidenav('left').close();
     this.Auth.logout();
     this.setToolbarMode(0);
     this.$location.path('/');
@@ -94,6 +94,11 @@ export class NavbarComponent extends Base{
   }
 
   goBack(){
+    this.$location.path('/');
+  }
+
+  goHome(){
+    this.$mdSidenav('left').close();
     this.$location.path('/');
   }
 

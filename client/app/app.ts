@@ -20,18 +20,15 @@ import {routeConfig} from './app.config';
 
 import _Auth from '../components/auth/auth.module';
 import account from './account';
-import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
-import aclaraciones from './aclaraciones/aclaracion';
-import adminlogin from './adminlogin/adminlogin.component';
 import list from './list/list.component';
+import profile from './profile/profile.component';
 import main from './main';
-// import monitoreo from './monitoreo/monitoreo';
-// import reportes from './reportes/reportes.component';
+
 
 
 import './app.css';
@@ -50,12 +47,10 @@ angular.module('colmorovApp', [
   ngResponsiveParallax,
 
   _Auth,
-  account,
-  admin,  
+  account, 
   navbar,
-  aclaraciones,
-  adminlogin,
   list,
+  profile,
   main,
   footer,
   constants,

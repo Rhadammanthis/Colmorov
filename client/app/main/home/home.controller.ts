@@ -28,11 +28,7 @@ class HomeController extends Base{
     {
         console.log('init')
         if(this.Auth.getUser()!==null&&this.Auth.getUser()!==undefined)
-        {
-            this.setToolbarMode(3);
-            var currentUser = this.Auth.getUser();
-            this.setTitle('Welcome, ' + currentUser.userName + '!');
-        }
+            this.$location.path('/profile');
         else
             this.setToolbarMode(0);
     }

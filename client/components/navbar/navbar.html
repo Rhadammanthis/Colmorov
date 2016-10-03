@@ -51,25 +51,17 @@
 	<md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id='left'>
 		<md-toolbar class="md-theme-light">
 			<h1 class=md-toolbar-tools> Men&uacute;</h1>
-			<md-content layout-padding=''>
-				<form>
-					<md-input-container>
-						<md-button  class=md-primary ng-href="/movies" target='_self' style='color: #000'> Movies</md-button>
-						<br>
-						<md-button class='no-padding md-primary' ng-href="/movies" target='_self' style='color: #000'> Home</md-button>
-						<div ng-show="nav.$rootScope.show===2">
-							<md-button class=md-primary ng-click='nav.personal()' target='_self' style='color: #000'> MONITOREO</md-button>
-							<br>
-							<md-button class=md-primary ng-href='{{nav.aclaracionesURL}}' target='_self' style='color: #000'> ACLARACIONES</md-button>
-							<br>
-						</div>
-						<div ng-show="nav.$rootScope.show===1">
-							<md-button class=md-primary ng-click='nav.aclaracionescl()' target='_self' style='color: #000'> Aclaraciones</md-button>
-							<br>
-						</div>
-						<md-button class=md-primary ng-click='nav.logout()' target='_self' style='color: #000'> Salir</md-button>
-					</md-input-container>
-				</form>
+			<md-content flex>
+				<div layout="column">
+					<md-button class='no-padding md-primary'  ng-click='nav.goHome()' target='_self' style='color: #000'>
+          	<md-icon md-svg-icon='/assets/icons/ic_home_black_24px.svg'></md-icon>
+            Home
+          </md-button>
+					<md-button class='no-padding md-primary'  ng-click='nav.logOut()' target='_self' style='color: #000'>
+          	<!--<md-icon md-svg-icon='/assets/icons/ic_home_black_24px.svg'></md-icon>-->
+            Log out
+          </md-button>
+				</div>
 			</md-content>
 		</md-toolbar>
 	</md-sidenav>

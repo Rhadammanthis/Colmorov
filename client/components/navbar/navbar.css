@@ -24,3 +24,10 @@ asasas
   position: relative;
 }
 
+.no-padding{
+  margin: 0;
+  padding: 10px;
+  color: #000;
+  text-align: left
+}
+
