@@ -1,4 +1,3 @@
-<div id="loading-bar-container"></div>
 <md-content class="md-padding" >
     <div flex-xs layout-xs="column" flex-sm layout-sm="column" layout="row">
       <md-card flex-gt-sm="25" flex="100" ng-repeat="movie in pfc.movies" ng-if="pfc.movies.length > 0" ng-click="pfc.loadSingle(movie)">
@@ -9,12 +8,12 @@
             <span class="md-subhead">{{movie.release_date}}</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content class="padding">
           <p>
             {{movie.overview}}
           </p>
         </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
+        <!--<md-card-actions layout="row" layout-align="end center">
           <md-button class="md-icon-button" aria-label="Favorite" ng-click="pfc.like()">
             <md-icon md-svg-icon="assets/images/icons/ic_favorite_black_24px.svg"></md-icon>
           </md-button>
@@ -24,11 +23,7 @@
           <md-button class="md-icon-button" aria-label="Share">
             <md-icon md-svg-icon="assets/images/icons/ic_reorder_black_24px.svg"></md-icon>
           </md-button>
-        </md-card-actions>
+        </md-card-actions>-->
       </md-card>
     </div>
-    <!--<div style="position: fixed">
-      <md-button class="md-fab" aria-label="Eat cake">
-      </md-button>
-    </div>-->
 </md-content>

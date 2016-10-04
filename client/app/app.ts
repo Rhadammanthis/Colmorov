@@ -19,7 +19,6 @@ const ngTable = require('angular-material-data-table');
 import {routeConfig} from './app.config';
 
 import _Auth from '../components/auth/auth.module';
-import account from './account';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import constants from './app.constants';
@@ -47,7 +46,6 @@ angular.module('colmorovApp', [
   ngResponsiveParallax,
 
   _Auth,
-  account, 
   navbar,
   list,
   profile,

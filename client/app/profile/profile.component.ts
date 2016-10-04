@@ -13,7 +13,6 @@ export class ProfileComponent extends Base{
 
   $http = null;
   $location = null;
-  // cfpLoadingBar = null;
 
   Auth: any;
 
@@ -62,24 +61,6 @@ export class ProfileComponent extends Base{
       
     });  
 
-    // var data = JSON.stringify({
-    //   "id": [
-    //     313922,
-    //     310131,
-    //     290250,
-    //     209112,
-    //     // 301365
-    //   ]
-    // });
-
-    // console.log(this.movies);
-    // console.log(data);
-
-    // this.$http.post('api/movies', data).then(function (result) {
-    //   console.log(result.data);
-    //   _this.movies = result.data;
-    // });  
-
   }
 
   completeImagePath = function(path: string){
@@ -89,7 +70,7 @@ export class ProfileComponent extends Base{
       return "http://www.tea-tron.com/antorodriguez/blog/wp-content/uploads/2016/04/lowRes1.jpeg";
   }
 
-    loadSingle = function(movie){
+  loadSingle = function(movie){
     console.log('doing shit...');
     this.$location.url('/movies/' + movie.id);
   }
@@ -103,6 +84,7 @@ export default angular.module('colmorovApp.profile', [ngRoute, 'angular-loading-
   .config(routes)
   .component('profile', {
     template: require('./profile.html'),
+    css: require('./profile.css'),
     controller: ProfileComponent,
     controllerAs: 'pfc'
   })
