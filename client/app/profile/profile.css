@@ -1,8 +1,10 @@
-p.black{
+/*The '.' syntaxis indicates that any member with this class 'black' should have these properties*/
+.black{
   color: #000;
   text-align: left;
 }
 
+/*This other indicated that this style should be applied to the 'md-card-content' members with the class 'padding'*/
 md-card-content.padding{
     padding-bottom: 50px;
 }

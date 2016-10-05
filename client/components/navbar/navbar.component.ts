@@ -102,6 +102,11 @@ export class NavbarComponent extends Base{
     this.$location.path('/');
   }
 
+  goToList(){
+    this.$mdSidenav('left').close();
+    this.$location.path('/list');
+  }
+
 
   aclaracionescl(){
     this.$mdSidenav('left').close();

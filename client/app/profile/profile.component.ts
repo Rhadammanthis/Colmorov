@@ -14,6 +14,8 @@ export class ProfileComponent extends Base{
   $http = null;
   $location = null;
 
+  currentUser: any;
+
   Auth: any;
 
   constructor($rootScope, $http, $location, Auth) {
@@ -35,8 +37,8 @@ export class ProfileComponent extends Base{
     this.setToolbarMode(2);
 
     if(this.Auth.getUser()!==null&&this.Auth.getUser()!==undefined){
-      var currentUser = this.Auth.getUser();
-      this._$rootScope.title = 'Hi there, ' + currentUser.userName + '!';
+      this.currentUser = this.Auth.getUser();
+      this._$rootScope.title = 'Hi there, ' + this.currentUser.userName + '!';
     }
     else{
       this.$location.path('/');

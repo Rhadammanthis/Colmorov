@@ -7,7 +7,7 @@ import routes from './list.routes';
 import Base from '../../components/object/base/Base';
 
 export class AdminloginComponent extends Base{
-      $http: any;
+  $http: any;
 	$location: any;
 	$mdDialog: any;
 	$mdMedia: any;
@@ -23,18 +23,13 @@ export class AdminloginComponent extends Base{
     this.$location = $location;
     this.$mdDialog = $mdDialog;
     this.$mdMedia = $mdMedia;
-	this.Auth = Auth;
-	this.$rootScope = $rootScope;
+	  this.Auth = Auth;
+	  this.$rootScope = $rootScope;
   }
 
-    $onInit(){
+  $onInit(){
         this.setToolbarMode(2);
-    
-		// if(this.Auth.getUser()!==null&&this.Auth.getUser()!==undefined){
-		// 	this.$location.path('/');
-		// }else if(this.Auth.getAdmi()!==null&&this.Auth.getAdmi()!==undefined){
-		// 	this.$location.path('/');
-		// }
+
 	}
 }
 
