@@ -1,1 +1,16 @@
-List!
+<!--<div class='jasper' layout="row" layout-wrap>
+    <md-card style="width: 14%;" ng-repeat="user in ltc.users">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Green_Room_(film)_POSTER.jpg" class="md-card-image" alt="user avatar">
+        <h3>{{user}}</h3>
+    </md-card>
+</div>-->
+
+<div class="dynamic-grid" angular-grid="ltc.pics" style="overflow:hidden; background: #eeeeee;" grid-width="300" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
+     <div class="card" data-ng-repeat="pic in ltc.pics">
+        <div class="img" style="background-image: url({{pic.poster.file_path}});"></div> 
+        <div class="inside">
+            <h3>{{pic.title}}</h3>
+        </div>
+         <!--<img src="{{pic.poster.file_path}}" class="grid-img" data-actual-width = "{{pic.posterwidth}}"  data-actual-height="240" />-->
+     </div>
+ </div>

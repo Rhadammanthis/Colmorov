@@ -82,7 +82,7 @@ export class ProfileComponent extends Base{
   }
 }
 
-export default angular.module('colmorovApp.profile', [ngRoute, 'angular-loading-bar'])
+export default angular.module('colmorovApp.profile', [ngRoute])
   .config(routes)
   .component('profile', {
     template: require('./profile.html'),

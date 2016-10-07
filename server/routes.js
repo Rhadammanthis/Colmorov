@@ -12,6 +12,7 @@ export default function(app) {
   app.use('/api/clientes', require('./api/clientes'));
   app.use('/api/movies', require('./api/movie'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/list', require('./api/list'));
 
 
   app.use('/auth', require('./auth').default);

@@ -10,7 +10,7 @@ const ngMaterial = require('angular-material');
 const ngAngularLoadingbar = require('angular-loading-bar')
 const ngResponsiveParallax = require('angular-responsive-parallax')
 const ngTable = require('angular-material-data-table');
-
+const angularGrid = require('angularGrid');
 
 // const ngMessages = require('angular-messages');
 // import ngValidationMatch from 'angular-validation-match';
@@ -44,6 +44,7 @@ angular.module('colmorovApp', [
   ngTable,
   ngAngularLoadingbar,
   ngResponsiveParallax,
+  angularGrid,
 
   _Auth,
   navbar,
