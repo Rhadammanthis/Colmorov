@@ -101,21 +101,21 @@ router.post('/pe/login', function(req, res, next){
 					}
 					aut.empresa = bodyLog.empresa.nombre;
 					aut.permisos = {};
-					if(bodyLog.permisos.hasOwnProperty('administracion_monitoreo')){
-						aut.permisos.administracion_monitoreo = bodyLog.permisos.administracion_monitoreo;
-					}else{
-						aut.permisos.administracion_monitoreo = '0000';
-					}
+					// if(bodyLog.permisos.hasOwnProperty('administracion_monitoreo')){
+					// 	aut.permisos.administracion_monitoreo = bodyLog.permisos.administracion_monitoreo;
+					// }else{
+					// 	aut.permisos.administracion_monitoreo = '0000';
+					// }
 					if(bodyLog.permisos.hasOwnProperty('responder_aclaraciones')){
 						aut.permisos.responder_aclaraciones = bodyLog.permisos.responder_aclaraciones;
 					}else{
 						aut.permisos.responder_aclaraciones = '0000';
 					}
-					if(bodyLog.permisos.hasOwnProperty('registro_monitoreo')){
-						aut.permisos.registro_monitoreo = bodyLog.permisos.registro_monitoreo;
-					}else{
-						aut.permisos.registro_monitoreo = '0000';
-					}
+					// if(bodyLog.permisos.hasOwnProperty('registro_monitoreo')){
+					// 	aut.permisos.registro_monitoreo = bodyLog.permisos.registro_monitoreo;
+					// }else{
+					// 	aut.permisos.registro_monitoreo = '0000';
+					// }
                 	res.json({ datos : aut, token: signTokenU(bodyLog, token) });
 	  			}else{
 					aut.active = false;

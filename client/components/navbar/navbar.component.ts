@@ -118,12 +118,12 @@ export class NavbarComponent extends Base{
     this.$rootScope.refresh = '';
   }
 
-  personal(){
-    this.$mdSidenav('left').close();
-    this.$location.path('/monitoreo/personal');
-    this.setTitle('Personal');
-    this.setModeToolbar(ModeToolbar.NORMAL);
-  }
+  // personal(){
+  //   this.$mdSidenav('left').close();
+  //   this.$location.path('/monitoreo/personal');
+  //   this.setTitle('Personal');
+  //   this.setModeToolbar(ModeToolbar.NORMAL);
+  // }
 
     aclaracionespe(){
     this.$mdSidenav('left').close();
@@ -139,12 +139,12 @@ export class NavbarComponent extends Base{
     this.setModeToolbar(ModeToolbar.NORMAL);
   }
 
-  goMap(){
-    this.$mdSidenav('left').close();
-    // this.$rootScope.mapSend();
-    this.$location.path('/monitoreo/mapa');
-    this.setTitle('Ruta');
-  }
+  // goMap(){
+  //   this.$mdSidenav('left').close();
+  //   // this.$rootScope.mapSend();
+  //   this.$location.path('/monitoreo/mapa');
+  //   this.setTitle('Ruta');
+  // }
 }
 
 export default angular.module('directives.navbar', [])

@@ -41,14 +41,10 @@ table.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-selec
 
 /* Component styles are injected through gulp */
 /* inject:css */
-@import 'aclaraciones/aclaraciones.css';
-@import 'aclaraciones/chat/chat.css';
 @import 'list/list.css';
 @import 'main/home/home.css';
 @import 'main/main.css';
 @import 'main/signup/signup.css';
-@import 'monitoreo/agenda/agenda.css';
-@import 'monitoreo/monitoreo.css';
 @import 'profile/profile.css';
 @import '../components/footer/footer.css';
 @import '../components/navbar/navbar.css';

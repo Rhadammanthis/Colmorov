@@ -104,7 +104,7 @@ function respondWithResultArray(res, statusCode) {
           }
 
           res.status(statusCode).json(result);
-          // console.log(body.id) // Print the shortened url.
+          // console.log(body.id) // Print the shortened ur
         }
         else{
           console.log('error');

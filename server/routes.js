@@ -9,7 +9,6 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
-  app.use('/api/clientes', require('./api/clientes'));
   app.use('/api/movies', require('./api/movie'));
   app.use('/api/users', require('./api/user'));
   app.use('/api/list', require('./api/list'));
