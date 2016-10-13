@@ -1,16 +1,20 @@
 <!--<div class='jasper' layout="row" layout-wrap>
     <md-card style="width: 14%;" ng-repeat="user in ltc.users">
-        <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Green_Room_(film)_POSTER.jpg" class="md-card-image" alt="user avatar">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Gm)_POSTER.jpg" class="md-card-image" alt="user avatar">
         <h3>{{user}}</h3>
     </md-card>
 </div>-->
 
-<div class="dynamic-grid" angular-grid="ltc.pics" style="overflow:hidden; background: #eeeeee;" grid-width="200" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
-     <div class="card" data-ng-repeat="pic in ltc.pics">
-        <div class="img" style="background-image: url({{pic.poster.file_path}});"></div> 
-        <div class="inside">
-            <h3>{{pic.title}}</h3>
-        </div>
-         <!--<img src="{{pic.poster.file_path}}" class="grid-img" data-actual-width = "{{pic.posterwidth}}"  data-actual-height="240" />-->
-     </div>
- </div>
+        <!--<div class="img-desc-wrap"> 
+            <div class="title">
+                {{pic.title}}
+            </div>
+        </div>-->
+
+<div class="dynamic-grid" angular-grid="ltc.pics" grid-width="125" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="false" >
+    <div class="grid" data-ng-repeat="pic in ltc.pics" ng-mouseenter="pic.show = true" ng-mouseleave="pic.show = false">
+        <img ng-if="pic.show" ng-src="https://upload.wikimedia.org/wikipedia/en/5/53/Blade_Runner_poster.jpg" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" />
+        <img ng-src="{{pic.poster.file_path | trusted}}" class="grid-img-under" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" />    
+        <!--<div ng-if="pic.show">{{pic.title}}</div>-->
+    </div>
+</div>

@@ -1,4 +1,97 @@
+body {
+  font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+  font-size: 16px;
+}
+#gridWrap {
+  padding: 20px;
+}
+.dynamic-grid {
+  position: relative;
+  display: none;
+  margin: 10px;
+  padding: 0;
+}
+.dynamic-grid.angular-grid {
+  display: block;
+}
 .grid {
+  position: absolute;
+  list-style: none;
+  background: #ffffff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+  transition: all 400ms ease;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.grid.ng-leave {
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -o-transition: all ease 400ms;
+  transition: all ease 400ms;
+}
+.grid.ng-leave.ng-leave-active {
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  opacity: 0;
+}
+.grid.ng-enter {
+  -webkit-transition: all ease 400ms;
+  -moz-transition: all ease 400ms;
+  -o-transition: all ease 400ms;
+  transition: all ease 400ms;
+  -webkit-transition-delay: 500ms;
+  -moz-transition-delay: 500ms;
+  -o-transition-delay: 500ms;
+  transition-delay: 500ms;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  opacity: 0;
+}
+.grid.ng-enter.ng-enter-active {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.grid-img {
+  position:absolute;
+  width: 100%;
+  vertical-align: middle;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.grid-img-under {
+  width: 100%;
+  vertical-align: middle;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.grid-img.img-loaded {
+  visibility: visible;
+  opacity: 1;
+}
+/*.grid {
     border: 1px solid #cccccc;
     list-style: none;
     background: #ffffff;
@@ -48,11 +141,11 @@
 }
 
 .card .img {
-  min-width: 67px;
-  min-height: 100px;
+  min-width: 100px;
+  min-height: 300px;
   max-height: 300px;
   max-width: 200px;
-  /*padding-top: 75%;*/
+  padding-top: 75%;
   background-size: cover;
   background-color: #ccc;
 }
@@ -122,4 +215,4 @@
 .grid-img.img-loaded {
   visibility: visible;
   opacity: 1;
-}
+}*/

@@ -152,7 +152,12 @@ angular.module('colmorovApp', [
       $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey')
       .accentPalette('teal');
-});
+})
+.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);
 
 angular
   .element(document)

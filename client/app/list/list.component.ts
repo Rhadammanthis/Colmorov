@@ -16,6 +16,9 @@ export class ListComponent extends Base{
 	Auth: any;
 	$rootScope: any;
 
+  screenHeight;
+  screenWidth;
+
   pics;
   message = "Hola";
 
@@ -47,8 +50,10 @@ export class ListComponent extends Base{
       this.setToolbarMode(2);
       var _this = this;
 
+      this.calculatePosterSize();
+
       this.loadImages().then(function(data){
-          console.log(data.data);
+          
         //   data.data.items.forEach(function(obj){
         //       var desc = obj.description,
         //           width = desc.match(/width="(.*?)"/)[1],
@@ -61,8 +66,23 @@ export class ListComponent extends Base{
           console.log('should be ready');
           console.log(_this.pics);
           _this.refresh();
+          console.log(_this.pics);
           _this.message = "Friend";
       });
+
+    }
+
+    calculatePosterSize = function(){
+      
+      this.screenWidth = window.innerWidth;
+      this.screenHeight = window.innerHeight;
+
+      this.screenWidth /= 5;
+
+      this.screenHeight = (2/3) * this.screenWidth;
+
+      console.log('Height: ' + this.screenHeight);
+      console.log('width: ' + this.screenWidth);
 
     }
 }
