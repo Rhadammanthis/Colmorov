@@ -69,24 +69,13 @@ body {
   transform: scale(1);
   opacity: 1;
 }
-
 .grid-img {
-  position:absolute;
   width: 100%;
   vertical-align: middle;
   background-color: #fff;
   opacity: 0;
   visibility: hidden;
 }
-
-.grid-img-under {
-  width: 100%;
-  vertical-align: middle;
-  background-color: #fff;
-  opacity: 0;
-  visibility: hidden;
-}
-
 .grid-img.img-loaded {
   visibility: visible;
   opacity: 1;
