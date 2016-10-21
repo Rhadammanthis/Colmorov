@@ -7,7 +7,7 @@
         <md-icon md-svg-icon="../../assets/icons/ic_menu_white_24px.svg"></md-icon>
       </md-button>
       <h1>
-        <span>{{nav._$rootScope.title}}</span>
+        <span class="lobster-style">{{nav._$rootScope.title}}</span>
       </h1>
       <span flex></span>
     </div>
@@ -16,7 +16,7 @@
 	<md-toolbar ng-if="nav._$rootScope.toolbarMode === 0">
 		<div class="md-toolbar-tools">
 			<h2>
-				<span>{{nav._$rootScope.title}}</span>
+				<span class="lobster-style">{{nav._$rootScope.title}}</span>
 			</h2>
 			<span flex></span>
 			<md-button  ng-click="nav.goToLogIn()">Log in!</md-button>
@@ -30,7 +30,7 @@
         <md-icon md-svg-icon="../../assets/icons/ic_arrow_back_white_24px.svg"></md-icon>
       </md-button>
       <h1>
-        <span>{{nav._$rootScope.title}}</span>
+        <span class="lobster-style">{{nav._$rootScope.title}}</span>
       </h1>
       <span flex></span>
     </div>
@@ -39,7 +39,7 @@
 	<md-toolbar ng-if="nav._$rootScope.toolbarMode === 3">
 		<div class="md-toolbar-tools">
 			<h2>
-				<span>{{nav._$rootScope.title}}</span>
+				<span class="lobster-style">{{nav._$rootScope.title}}</span>
 			</h2>
 			<span flex></span>
 			<md-button  ng-click="nav.logOut()">Log out</md-button>
@@ -50,7 +50,7 @@
   
 	<md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id='left'>
 		<md-toolbar class="md-theme-light">
-			<h1 class=md-toolbar-tools> Men&uacute;</h1>
+			<h1 class="md-toolbar-tools lobster-style"> Men&uacute;</h1>
 			<md-content flex>
 				<div layout="column">
 					<md-button class='no-padding md-primary'  ng-click='nav.goHome()' target='_self' style='color: #000'>

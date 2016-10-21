@@ -11,10 +11,16 @@
             </div>
         </div>-->
 
-<div class="dynamic-grid" angular-grid="ltc.pics" grid-width="120" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
+<div class="dynamic-grid" angular-grid="ltc.pics" grid-width="180" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
     <div class="grid" data-ng-repeat="pic in ltc.pics" ng-mouseenter="pic.show = true" ng-mouseleave="pic.show = false">
         <!--<img ng-if="pic.show" ng-src="https://upload.wikimedia.org/wikipedia/en/5/53/Blade_Runner_poster.jpg" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" />-->
-        <img ng-src="{{pic.poster.file_path | trusted}}" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" />    
+        <img ng-src="{{pic.poster.file_path | trusted}}" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" /> 
+        <div class="badge">
+            <p class="lobster-style">{{pic.list_id}}</p>
+        </div>   
         <!--<div ng-if="pic.show">{{pic.title}}</div>-->
     </div>
 </div>
+        <div class="badge">
+            <p class="lobster-style">LOL</p>
+        </div>   

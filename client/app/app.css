@@ -32,6 +32,15 @@ table.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-selec
   display: none;
 }
 
+ .lobster-style{
+   font-family: 'Lobster', cursive;
+ }
+
+ .raleway-style{
+   font-family: 'Raleway', sans-serif;
+ }
+
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

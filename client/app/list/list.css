@@ -14,23 +14,7 @@ body {
 .dynamic-grid.angular-grid {
   display: block;
 }
-.grid {
-  position: absolute;
-  list-style: none;
-  background: #ffffff;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-  -webkit-transition: all 400ms ease;
-  -moz-transition: all 400ms ease;
-  -o-transition: all 400ms ease;
-  transition: all 400ms ease;
-  overflow: hidden;
-  border-radius: 5px;
-}
+
 .grid.ng-leave {
   -webkit-transition: all ease 400ms;
   -moz-transition: all ease 400ms;
@@ -69,139 +53,90 @@ body {
   transform: scale(1);
   opacity: 1;
 }
-.grid-img {
-  width: 100%;
-  vertical-align: middle;
-  background-color: #fff;
-  opacity: 0;
-  visibility: hidden;
-}
+
 .grid-img.img-loaded {
   visibility: visible;
   opacity: 1;
 }
-/*.grid {
-    border: 1px solid #cccccc;
-    list-style: none;
-    background: #ffffff;
-    box-sizing: border-box;
-    -moz-box-sizing : border-box;
-    -webkit-transition: all 0.6s ease-out;
-    transition: all 0.6s ease-out;
-}
-.grid-img {
-    width: 100%;
-    vertical-align: middle;
-    -webkit-transition: opacity 0.6s ease-out;
-    transition: opacity 0.6s ease-out;
-    background-color: #fff;
-    opacity: 0;
-    visibility: hidden;
-}
- 
-.grid-img.img-loaded{
-    visibility: visible;
-    opacity: 1;
-}
 
-.card {
-  background: white;
-  min-width: 67px;
-  min-height: 100px;
-  max-height: 300px;
-  max-width: 200px;
-  margin: 8px;
-  -webkit-transition: .4s;
-  transition: .4s;
-  opacity: 0;
-  -webkit-transform: scale(0.75) translate3d(0, 200px, 0);
-  transform: scale(0.75) translate3d(0, 200px, 0);
-  border-radius: 5px;
-  box-shadow: 0 1px 4px 0 rgba(255, 255, 255, 0.54);
-  overflow: hidden;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.card.angular-grid-item {
-  opacity: 1;
-  -webkit-transform: scale(1) translate3d(0, 0, 0);
-  transform: scale(1) translate3d(0, 0, 0);
-}
-
-.card .img {
-  min-width: 100px;
-  min-height: 300px;
-  max-height: 300px;
-  max-width: 200px;
-  padding-top: 75%;
-  background-size: cover;
-  background-color: #ccc;
-}
-
-.card .inside {
-  padding: 16px;
-  word-wrap: break-word;
-}
-
-.card .inside h3 {
-  font-size: 1.0vh;
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.card .inside a {
-  color: #E91E63;
-  text-decoration: none;
-}
-
-.card .inside a:hover {
-  text-decoration: underline;
-}
-
-.card .inside .description {
-  font-size: 14px;
-  line-height: 1.3;
-  color: #555;
-}
-
-.cards-wrap {
-  margin: 32px 64px;
-  padding-bottom: 64px;
-  position: relative;
-}
-
-.loading-more-indicator {
-  text-align: center;
-}
-
-.loading-more-indicator md-progress-circular {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  display: inline-block;
-}
 
 .grid {
-  border: 1px solid #cccccc;
+  z-index:0;
   list-style: none;
-  background: #ffffff;
-  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0);
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-transition: all 0.6s ease-out;
-  transition: all 0.6s ease-out;
+  box-sizing: border-box;
+  /*-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);*/
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+  transition: all 400ms ease;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 5px;
 }
 
 .grid-img {
+  margin-bottom: 25px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index:1;
   width: 100%;
   vertical-align: middle;
-  -webkit-transition: opacity 0.6s ease-out;
-  transition: opacity 0.6s ease-out;
   background-color: #fff;
   opacity: 0;
   visibility: hidden;
 }
 
-.grid-img.img-loaded {
-  visibility: visible;
-  opacity: 1;
-}*/
+.badge p {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.badge {
+  background: #607D8B;
+  border-radius: 200px;
+  color: white;
+  display: table;
+  left:0; 
+  right:0;
+  z-index: 10;
+  position: absolute;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  margin-top: -42px;
+  text-align: center;
+  background: #607D8B;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+/**
+Daddy went to heaven in a chariot on fire
+Mommy went hell in 
+Maggie went to limbo with candle on her curls
+I lingered here in Arkansa to kill the pretty girls
+
+Daddy was a preacher and he always said to me
+
+Momma couldnt stand
+drove uppon a mountain she coudln't been no higher
+
+I fell in love with Maggie and her golden curly hair
+and now poor Maggie is dead
+
+I lingered here in Arkansa
+
+*/

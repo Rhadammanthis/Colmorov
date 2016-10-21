@@ -99,6 +99,7 @@ function respondWithResultArray(res, statusCode) {
             item.title = body[i].original_title;
             item.poster = body[i].posters[0];
             item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + item.poster.file_path;
+            item.list_id = entity[i].list_id;
 
             result.movies.push(item);
           }
