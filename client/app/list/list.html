@@ -1,26 +1,24 @@
-<!--<div class='jasper' layout="row" layout-wrap>
-    <md-card style="width: 14%;" ng-repeat="user in ltc.users">
-        <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/Gm)_POSTER.jpg" class="md-card-image" alt="user avatar">
-        <h3>{{user}}</h3>
-    </md-card>
-</div>-->
+<div class="padded-container">
+    <div class="dynamic-grid" angular-grid="ltc.pics" grid-width="180" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
+        <div class="grid" data-ng-repeat="pic in ltc.pics" ng-mouseenter="pic.show = true" ng-mouseleave="pic.show = false">
+            <img ng-src="{{pic.poster.file_path | trusted}}" class="hvr-underline-from-center grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" /> 
+            <div class="badge">
+                <p class="lobster-style">{{pic.list_id}}</p>
+            </div>   
+        </div>
+    </div>
 
-        <!--<div class="img-desc-wrap"> 
-            <div class="title">
-                {{pic.title}}
-            </div>
-        </div>-->
-
-<div class="dynamic-grid" angular-grid="ltc.pics" grid-width="180" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
-    <div class="grid" data-ng-repeat="pic in ltc.pics" ng-mouseenter="pic.show = true" ng-mouseleave="pic.show = false">
-        <!--<img ng-if="pic.show" ng-src="https://upload.wikimedia.org/wikipedia/en/5/53/Blade_Runner_poster.jpg" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" />-->
-        <img ng-src="{{pic.poster.file_path | trusted}}" class="grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" /> 
-        <div class="badge">
-            <p class="lobster-style">{{pic.list_id}}</p>
-        </div>   
-        <!--<div ng-if="pic.show">{{pic.title}}</div>-->
+    <div class="fixed-pos" layout="row">
+        <div flex></div>
+        <md-button style="margin-right:3%;" ng-click="ltc.addNewMovieDialog(ev)" class="md-fab md-primary" aria-label="Use Android">
+            <md-icon md-svg-src="../../assets/icons/ic_add_white_24px.svg"></md-icon>
+        </md-button>
     </div>
 </div>
-        <div class="badge">
-            <p class="lobster-style">LOL</p>
-        </div>   
+
+{{ltc.status}}
+
+<div class="badge">
+    <p class="lobster-style">LOL</p>
+</div>   
+

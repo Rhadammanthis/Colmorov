@@ -1,0 +1,57 @@
+<md-dialog aria-label="Mango (Fruit)" class="padded-container" >
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add new movie</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="anc.cancel()">
+          <md-icon  aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div id="demoScroll" class="md-dialog-content">
+        <!--<form ng-submit='anc.searchTitle()' name="searchForm">
+          <md-input-container class="md-block">
+              <label>Movie</label>
+              <input placeholder="Write title here" ng-model="anc.movieTitle" autofocus>
+          </md-input-container>
+        </form>-->
+        <md-input-container class="md-block">
+            <label>Movie Title</label>
+            <input type="text" ng-model="anc.movieTitle" autofocus />
+        </md-input-container>
+
+        <md-button ng-click="anc.searchTitle()" flex class="md-raised md-primary">Search</md-button>
+
+        <div class="content">
+          <div infinite-scroll='anc.fetchItems(anc.movieTitle)' infinite-scroll-disabled='anc.busy' infinite-scroll-distance='0' infinite-scroll-container="'#demoScroll'">
+            <div ng-repeat='movie in anc.movies' ng-click="anc.select(movie)">
+
+              <div class="card" layout="row">
+                <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}"  alt="Avatar" style="min-width:100px; min-height:150px; max-width:100px; max-height:150px;">
+                <div class="card-content">
+                  <h2 style="font-size: 1em;">{{movie.original_title}}</h2>
+                  <p>{{movie.overview}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-primary" ng-click="anc.answer('not useful')">
+        Cancel
+      </md-button>
+      <md-button ng-disabled="anc.disableAddNew" class="md-primary" ng-click="anc.confirAddNew()">
+        Ok!
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
