@@ -18,6 +18,7 @@ function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
+      console.log(entity);
       res.status(statusCode).json(entity);
     }
   };
@@ -97,13 +98,23 @@ function respondWithResultArray(res, statusCode) {
           for(var i in body){
             var item = {};
             item.title = body[i].original_title;
-            item.poster = body[i].posters[0];
-            item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + item.poster.file_path;
+            if( body[i].posters[0] != null)
+            {
+              item.poster = body[i].posters[0];
+              item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + item.poster.file_path;
+            }
+            else{
+              item.poster = {};
+              item.poster.height = 1500;
+              item.poster.width = 1000;
+              item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + body[i].poster_path;
+            }
             item.list_id = entity[i].list_id;
 
             result.movies.push(item);
           }
 
+          result.total = body.length;
           res.status(statusCode).json(result);
           // console.log(body.id) // Print the shortened ur
         }
