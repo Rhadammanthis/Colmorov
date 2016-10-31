@@ -11,6 +11,9 @@ var router = express.Router();
 var idArray = [];
 var movies = null;
 
+var cast = false;
+var crew = false;
+
 var response;
 
 router.post('/new', controller.create);
@@ -19,6 +22,14 @@ router.delete('/:id', controller.destroy);
 
 router.post('/', function(req, resp)
 {
+
+    //checks if 'Cast' should be included in reponse
+    cast = req.query.cast || false;
+    crew = req.query.crew || false;
+
+    console.log('Cast = ' + cast);
+    console.log('Crew = ' + crew);
+
     response = resp;
     movies = [];
     
@@ -34,7 +45,8 @@ router.post('/', function(req, resp)
     //async info fetch of as many items there are in the body of the request
     async.map(idArray, fetchMovieInfo, function(err, results){
         if ( err){
-        console.log('error');
+            console.log('error');
+            response.json(results);
         } else {
             console.log('no error');
             
@@ -61,7 +73,7 @@ function fetchMovieInfo(index,cb)
     request(infoOptions, function (error, response, movieInfo) {
         
         if (error) {
-            cb(error)
+            return cb(error)
         }
 
         var infoData;
@@ -84,55 +96,64 @@ function fetchMovieInfo(index,cb)
         movie.release_date = infoData.release_date;
         movie.id = infoData.id;
 
-        if(movie.hasOwnProperty('error')){
-            cb(movie.error_description)
+        //query 'Cast' and 'Crew' data if applicable 
+        console.log('Cast or Crew is ON = ' + cast || crew)
+        if(cast || crew){
+
+            var creditsOptions = { method: 'GET',
+                url: 'http://api.themoviedb.org/3/movie/'+ id +'/credits',
+                qs: { api_key: '531aec356bbd54359474847e57c79986' },
+                headers: 
+                {'cache-control': 'no-cache' } 
+            };
+
+            request(creditsOptions, function (error, response, credits) {
+
+                if (error) {
+                    return cb(error)
+                }
+
+                var creditsData = JSON.parse(credits);
+
+                movie.cast = [];
+                movie.crew = [];
+
+                if(cast)
+                    for(var i in creditsData.cast){
+                        var cast = creditsData.cast[i];
+                        movie.cast.push(cast);
+                    }
+
+                if(crew)
+                    for(var i in creditsData.crew){
+                        var crew = creditsData.crew[i];
+                        movie.crew.push(crew);
+                    }
+
+                if(movie.hasOwnProperty('error')){
+                    return cb(movie.error_description)
+                }
+                else{
+
+                    console.log('Fetched in credits: ' + movie.original_title);
+
+                    cb(null, movie);
+                }
+            });
+
         }
         else{
 
-            console.log('Fetched: ' + movie.original_title);
-
-            cb(null, movie);
+            if(movie.hasOwnProperty('error')){
+                return cb(movie.error_description)
+            }
+            else{
+                console.log('Fetched in info: ' + movie.original_title);
+                cb(null, movie);
+            }
         }
         
-        // var creditsOptions = { method: 'GET',
-        //     url: 'http://api.themoviedb.org/3/movie/'+ id +'/credits',
-        //     qs: { api_key: '531aec356bbd54359474847e57c79986' },
-        //     headers: 
-        //     {'cache-control': 'no-cache' } 
-        // };
 
-        // console.log('Requesting credits with id: ' + id);
-
-        // request(creditsOptions, function (error, response, credits) {
-
-        //     if (error) {
-        //         cb(error)
-        //     }
-
-        //     var creditsData = JSON.parse(credits);
-
-        //     movie.cast = [];
-        //     movie.crew = [];
-
-        //     for(var i in creditsData.cast){
-        //         var cast = creditsData.cast[i];
-        //         movie.cast.push(cast);
-        //     }
-
-        //     for(var i in creditsData.crew){
-        //         var crew = creditsData.crew[i];
-        //         movie.crew.push(crew);
-        //     }
-
-        //     if(movie.hasOwnProperty('error')){
-        //         cb(movie.error_description)
-        //     }
-        //     else{
-
-        //         console.log('Fetched: ' + movie.original_title);
-
-        //         cb(null, movie);
-        //     }
 
             // var imagesOptions = { method: 'GET',
             //     url: 'http://api.themoviedb.org/3/movie/'+ id +'/images',
@@ -175,7 +196,7 @@ function fetchMovieInfo(index,cb)
             //     }
                 
             // });
-        // });
+        
     });
 }
 

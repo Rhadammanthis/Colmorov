@@ -14,6 +14,9 @@ var request = require("request");
 import _ from 'lodash';
 import List from './list.model';
 
+var cast = false;
+var crew = false;
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -64,6 +67,13 @@ function handleError(res, statusCode) {
 
 // Gets a list of Movies
 export function index(req, res) {
+
+  cast = req.query.cast || false;
+  crew = req.query.crew || false;
+
+  console.log('Cast in List = ' + cast);
+  console.log('Crew in List = ' + crew);
+
   return List.find().exec()
     .then(respondWithResultArray(res))
     .catch(handleError(res));
@@ -71,6 +81,11 @@ export function index(req, res) {
 
 function respondWithResultArray(res, statusCode) {
   statusCode = statusCode || 200;
+
+  var lCast, lCrew;
+  lCast = cast;
+  lCrew = crew;
+
   return function(entity) {
     if (entity) {
       var resp = {};
@@ -84,7 +99,7 @@ function respondWithResultArray(res, statusCode) {
       console.log(resp);
 
       var options = {
-        uri: 'http://localhost:3000/api/movies',
+        uri: 'http://localhost:3000/api/movies' + '?cast=' + cast + '&crew=' + crew,
         method: 'POST',
         json: resp
       };
@@ -96,22 +111,27 @@ function respondWithResultArray(res, statusCode) {
           result.movies = [];
 
           for(var i in body){
-            var item = {};
-            item.title = body[i].original_title;
-            // if( body[i].posters[0] != null)
-            // {
-            //   item.poster = body[i].posters[0];
-            //   item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + item.poster.file_path;
-            // }
-            // else{
+
+            if(body[i])
+            {
+              var item = {};
+              item.title = body[i].original_title;
+
               item.poster = {};
               item.poster.height = 1500;
               item.poster.width = 1000;
               item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + body[i].poster_path;
-            // }
-            item.list_id = entity[i].list_id;
 
-            result.movies.push(item);
+              item.list_id = entity[i].list_id;
+              item.mdb_id = entity[i].mdb_id;
+
+              if(cast)
+                item.cast = body[i].cast;
+              if(crew)
+                item.crew = body[i].crew;
+
+              result.movies.push(item);
+            }
           }
 
           result.total = body.length;
