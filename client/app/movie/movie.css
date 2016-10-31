@@ -1,0 +1,32 @@
+.backdrop-fade {
+    background: url(https://s2.ltrbxd.com/static/img/film-feature-fade.5df47d9a.png) center -680px no-repeat;
+    padding-top: 390px;
+}
+
+.backdrop-fade-image {
+    background-position: center 0;
+}
+
+#backdrop {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 1200px 675px;
+}
+
+#container{
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.content{
+    margin-left: 7%;
+}
+
+.content p{
+    margin-top: -5%;
+}
+
+.content h1{
+    font-size: 36px;
+}

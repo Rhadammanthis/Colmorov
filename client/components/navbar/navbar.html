@@ -19,8 +19,8 @@
 				<span class="lobster-style">{{nav._$rootScope.title}}</span>
 			</h2>
 			<span flex></span>
-			<md-button  ng-click="nav.goToLogIn()">Log in!</md-button>
-			<md-button  ng-click="nav.goToSignUp()">Sign up!</md-button>
+			<md-button style="text-transform: none;" ng-click="nav.goToLogIn()">Log in!</md-button>
+			<md-button style="text-transform: none;" ng-click="nav.goToSignUp()">Sign up!</md-button>
 		</div>
   </md-toolbar>
 
@@ -42,31 +42,29 @@
 				<span class="lobster-style">{{nav._$rootScope.title}}</span>
 			</h2>
 			<span flex></span>
-			<md-button  ng-click="nav.logOut()">Log out</md-button>
+			<md-button  ng-click="nav.logOut()" style="text-transform: none;">Log out</md-button>
 		</div>
   </md-toolbar>
 
 	<div id="loading-bar-container"></div>
   
-	<md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id='left'>
-		<md-toolbar class="md-theme-light">
-			<h1 class="md-toolbar-tools lobster-style"> Men&uacute;</h1>
+	<md-sidenav class="md-sidenav-left" md-component-id='left' style="">
+			<h1 class="md-toolbar-tools lobster-style" style="color: #FFF;"> Menu</h1>
 			<md-content flex>
 				<div layout="column">
-					<md-button class='no-padding md-primary'  ng-click='nav.goHome()' target='_self' style='color: #000'>
-          	<md-icon md-svg-icon='/assets/icons/ic_home_black_24px.svg'></md-icon>
+					<md-button class='no-padding' ng-click='nav.goHome()' target='_self' style='color: #FFF; text-transform: none;'>
+          	<!--<md-icon md-svg-icon='/assets/icons/ic_home_black_24px.svg'></md-icon>-->
             Home
           </md-button>
-					<md-button class='no-padding md-primary'  ng-click='nav.goToList()' target='_self' style='color: #000'>
-          	<md-icon md-svg-icon='/assets/icons/ic_list_black_24px.svg'></md-icon>
+					<md-button class='no-padding' ng-click='nav.goToList()' target='_self' style='color: #FFF; text-transform: none;'>
+          	<!--<md-icon md-svg-icon='/assets/icons/ic_list_black_24px.svg'></md-icon>-->
             Got to list
           </md-button>
-					<md-button class='no-padding md-primary'  ng-click='nav.logOut()' target='_self' style='color: #000'>
+					<md-button class='no-padding' ng-click='nav.logOut()' target='_self' style='color: #FFF; text-transform: none;'>
             Log out
           </md-button>
 				</div>
 			</md-content>
-		</md-toolbar>
 	</md-sidenav>
 </div>
 

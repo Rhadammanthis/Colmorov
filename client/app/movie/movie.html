@@ -1,0 +1,53 @@
+
+
+    <!--<div class="header" style="position: relative; left: 0; top: -80px; overflow: hidden;">
+        <img class="header" src="{{mic.completeImagePath(mic.movieInfo.backdrop_path)}}" style="position: relative; top: 120px; left: 0;"/>
+        <img class="header" src="https://s2.ltrbxd.com/static/img/film-feature-fade.5df47d9a.png" style="position: absolute; top: 120px; left: 0px;"/>
+    </div>-->
+    
+    <!--<div id="container">
+        <img class="header" ng-src="{{mic.completeImagePath(mic.movieInfo.backdrop_path)}}" alt="Washed Out">
+        <img class="header" ng-src="https://s2.ltrbxd.com/static/img/film-feature-fade.5df47d9a.png" alt="Washed Out">
+    </div>-->
+
+    <!--<div id="backdrop" style="background-position: center -55px; background-image: url({{mic.completeImagePath(mic.movieInfo.backdrop_path)}})" >
+    <div class="backdrop-fade backdrop-fade-image">-->
+
+<div hide-md>
+    <md-content class="padded-container-small" style="margin-top: 5%;">
+        <div layout="column" layout-gt-sm="row">
+            <div flex="100" flex-gt-sm="35">
+                <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
+            </div>
+            <div class="content" flex="100" flex-gt-sm="65">
+                <h1 class="lobster-style">{{mic.movie.info.original_title}}</h1>
+                <p class="raleway-style">{{mic.movie.info.tagline}}</p>
+                <h2 class="lobster-style">Overview</h2>
+                <p class="raleway-style">{{mic.movie.info.overview}}</p>
+                <h2 class="lobster-style">Director</h2>
+                <p class="raleway-style">{{mic.movie.info.director}}</p>
+            </div>
+        </div>
+    </md-content>
+</div>
+
+<!--A copy of the layout rigged to show up on tablets. There must be another way of doing this-->
+<div hide show-md>
+    <md-content class="padded-container-md" style="margin-top: 5%;">
+        <div layout="column" layout-gt-sm="row">
+            <div flex="100" flex-md="40">
+                <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
+            </div>
+            <div class="content" flex="100"flex-md="60">
+                <h1 class="lobster-style">{{mic.movie.info.original_title}}</h1>
+                <p class="raleway-style">{{mic.movie.info.tagline}}</p>
+                <h2 class="lobster-style">Overview</h2>
+                <p class="raleway-style">{{mic.movie.info.overview}}</p>
+                <h2 class="lobster-style">Director</h2>
+                <p class="raleway-style">{{mic.movie.info.director}}</p>
+            </div>
+        </div>
+    </md-content>
+</div>
+    
+</md-content>

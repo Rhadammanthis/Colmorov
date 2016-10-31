@@ -1,6 +1,6 @@
 <div class="padded-container">
     <div class="dynamic-grid" angular-grid="ltc.pics" grid-width="180" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
-        <div class="grid" data-ng-repeat="pic in ltc.pics" ng-mouseenter="pic.show = true" ng-mouseleave="pic.show = false">
+        <div class="grid" data-ng-repeat="pic in ltc.pics" ng-click="ltc.loadMovieInfo(pic)">
             <img ng-src="{{pic.poster.file_path | trusted}}" class="hvr-underline-from-center grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" /> 
             <div class="badge">
                 <p class="lobster-style">{{pic.list_id}}</p>
@@ -10,7 +10,7 @@
 
     <div class="fixed-pos" layout="row">
         <div flex></div>
-        <md-button style="margin-right:3%;" ng-click="ltc.addNewMovieDialog(ev)" class="md-fab md-primary" aria-label="Use Android">
+        <md-button style="margin-right:3%;" ng-click="ltc.addNewMovieDialog(ev)" class="md-fab" aria-label="Use Android">
             <md-icon md-svg-src="../../assets/icons/ic_add_white_24px.svg"></md-icon>
         </md-button>
     </div>

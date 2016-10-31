@@ -16,6 +16,7 @@ export class FooterComponent extends Base{
 export default angular.module('directives.footer', [])
   .component('footer', {
     template: require('./footer.html'),
+    css: require('./footer.css'),
     controller: FooterComponent,
     controllerAs: 'fc'
   })

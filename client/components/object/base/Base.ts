@@ -57,6 +57,24 @@ export default class Base{
         this._$rootScope.toolbarMode = mode;
     }
 
+    /**
+     * Completes the url to fetch image resources from The Movie Database
+     */
+    public completeImagePath(path: string){
+        if(path != null)
+            return "https://image.tmdb.org/t/p/w600/" + path;
+        else
+            return "http://www.tea-tron.com/antorodriguez/blog/wp-content/uploads/2016/04/lowRes1.jpeg";
+    }
+
+    public getMovieInfoURL(id){
+        return 'http://api.themoviedb.org/3/movie/' + id + '?api_key=531aec356bbd54359474847e57c79986';
+    }
+
+    public getMovieCreditsURL(id){
+        return 'http://api.themoviedb.org/3/movie/' + id + '/credits?api_key=531aec356bbd54359474847e57c79986';
+    }
+
 }
 
 /**

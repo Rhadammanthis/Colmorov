@@ -65,13 +65,6 @@ export class ProfileComponent extends Base{
 
   }
 
-  completeImagePath = function(path: string){
-    if(path != null)
-      return "https://image.tmdb.org/t/p/w600/" + path;
-    else
-      return "http://www.tea-tron.com/antorodriguez/blog/wp-content/uploads/2016/04/lowRes1.jpeg";
-  }
-
   loadSingle = function(movie){
     console.log('doing shit...');
     this.$location.url('/movies/' + movie.id);

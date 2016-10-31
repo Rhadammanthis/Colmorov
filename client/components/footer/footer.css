@@ -4,3 +4,23 @@ footer.footer {
   margin-top: 70px;
   border-top: 1px solid #E5E5E5;
 }
+
+/* unvisited link */
+a:link {
+    color: #FF5722;
+}
+
+/* visited link */
+a:visited {
+    color: #FF5722;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF5722;
+}
+
+/* selected link */
+a:active {
+    color: #FF5722;
+}

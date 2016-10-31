@@ -100,6 +100,10 @@ export class ListComponent extends Base{
       });
   }
 
+  loadMovieInfo = function(movie){
+    this.$location.path('/movie/'+movie.mdb_id);
+  }
+
 }
 
   class DialogController{

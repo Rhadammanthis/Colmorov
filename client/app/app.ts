@@ -27,6 +27,7 @@ import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import list from './list/list.component';
 import profile from './profile/profile.component';
+import movie from './movie/movie.component';
 import main from './main';
 
 
@@ -53,6 +54,7 @@ angular.module('colmorovApp', [
   list,
   profile,
   main,
+  movie,
   footer,
   constants,
   socket,
@@ -152,8 +154,9 @@ angular.module('colmorovApp', [
   })
   .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey')
-      .accentPalette('teal');
+      .primaryPalette('deep-orange')
+      .accentPalette('blue-grey')
+      .dark();
 })
 .filter('trusted', ['$sce', function ($sce) {
     return function(url) {
