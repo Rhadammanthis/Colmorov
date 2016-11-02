@@ -59,7 +59,7 @@ table.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-selec
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: #2098d1;
+  background: #FF5722;
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -87,6 +87,7 @@ table.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-selec
 @import 'main/home/home.css';
 @import 'main/main.css';
 @import 'main/signup/signup.css';
+@import 'movie/movie.css';
 @import 'profile/profile.css';
 @import '../components/footer/footer.css';
 @import '../components/navbar/navbar.css';

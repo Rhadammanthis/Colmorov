@@ -28,6 +28,26 @@
                 <p class="raleway-style">{{mic.movie.info.director}}</p>
             </div>
         </div>
+        <h1 style="font-size: 36px;" class="lobster-style">Cast</h1>
+        <div class="cast-big" layout="column" layout-gt-sm="row">
+            <div flex></div>
+            <div ng-repeat="cast in mic.movie.credits.fewTopBilledCast">
+                <div class="cast-card-big" layout-align="center center">
+                    <div layout="column" layout-gt-sm="row">
+                        <div class="offset" hide-gt-sm></div>
+                        <div style="margin-top:10%;">
+                            <div class="hvr-underline-from-center cast-portait-big">
+                                <img ng-src="{{mic.completeImagePath(cast.profile_path)}}" alt="Washed Out">
+                            </div>
+                            <div class="lobster-style">{{cast.character}}</div>
+                            <div class="raleway-style">{{cast.name}}</div>
+                        </div>
+                        <div flex="100"></div>
+                    </div>
+                </div>
+            </div>
+            <div flex></div>
+        </div>
     </md-content>
 </div>
 
@@ -45,6 +65,20 @@
                 <p class="raleway-style">{{mic.movie.info.overview}}</p>
                 <h2 class="lobster-style">Director</h2>
                 <p class="raleway-style">{{mic.movie.info.director}}</p>
+            </div>
+        </div>
+        <h1 class="lobster-style">Cast</h1>
+    </md-content>
+    <md-content>
+        <div class="cast" layout="column" layout-gt-sm="row">
+            <div ng-repeat="cast in mic.movie.credits.manyTopBilledCast">
+                <div class="cast-card" layout="column" layout-align-gt-sm="center center" flex="100">
+                    <div class="hvr-underline-from-center cast-portait">
+                        <img ng-src="{{mic.completeImagePath(cast.profile_path)}}" alt="Washed Out">
+                    </div>
+                    <div class="lobster-style">{{cast.character}}</div>
+                    <div class="raleway-style">{{cast.name}}</div>
+                </div>
             </div>
         </div>
     </md-content>

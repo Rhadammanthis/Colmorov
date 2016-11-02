@@ -40,6 +40,7 @@ export class MovieInfoComponent extends Base{
       _this.$http.get(url, null).then(function (result) {
         _this.movie.credits = result.data;
         _this.searchForDirector();
+        _this.sortTopBilledCast();
       });
 
     });   
@@ -55,6 +56,19 @@ export class MovieInfoComponent extends Base{
       }
     }
   }
+
+  sortTopBilledCast = function(){
+    var _this = this;
+    this.movie.credits.manyTopBilledCast = [];
+    this.movie.credits.fewTopBilledCast = [];
+    for(var i = 0; i < 10; i++){
+      _this.movie.credits.manyTopBilledCast.push(_this.movie.credits.cast[i]);
+      if(i < 5){
+        _this.movie.credits.fewTopBilledCast.push(_this.movie.credits.cast[i]);
+      }
+    }
+  }
+
 
 }
 
