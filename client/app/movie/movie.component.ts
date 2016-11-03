@@ -12,25 +12,32 @@ export class MovieInfoComponent extends Base{
   $location = null;
   $routeParams = null;
   $window = null;
+  $cookies = null;
 
   id;
   movie = {"info":[],"credits":[]};
+  movieMetaData = {};
 
-  constructor($rootScope, $http, $location, $routeParams, $window, Auth) {
+  constructor($rootScope, $http, $location, $routeParams, $window, $cookies, Auth) {
     super($rootScope);
     this.$http = $http;
     this.$location = $location;
     this.$routeParams = $routeParams;
     this.$window = $window;
+    this.$cookies = $cookies;
   }
 
   $onInit(){
+    //scroll to top
     this.$window.scrollTo(0, 0);
-    this.setToolbarMode(2);
-    console.log('onInit');
-    this.id = this.$routeParams.id;
 
-    console.log("Id: " + this.id);
+    this.setToolbarMode(2);
+
+    //retrieve movie meta data from cookies
+    this.movieMetaData = JSON.parse(this.$cookies.get('mMeta'));
+    console.log(this.movieMetaData);
+
+    this.id = this.$routeParams.id;
 
     var _this = this;
     var url = this.getMovieInfoURL(this.id);
@@ -64,7 +71,7 @@ export class MovieInfoComponent extends Base{
     var _this = this;
     this.movie.credits.manyTopBilledCast = [];
     this.movie.credits.fewTopBilledCast = [];
-    for(var i = 0; i < 10; i++){
+    for(var i = 0; i < 11; i++){
       _this.movie.credits.manyTopBilledCast.push(_this.movie.credits.cast[i]);
       if(i < 5){
         _this.movie.credits.fewTopBilledCast.push(_this.movie.credits.cast[i]);

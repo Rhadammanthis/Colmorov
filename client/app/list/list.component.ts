@@ -11,6 +11,7 @@ export class ListComponent extends Base{
 	$location: any;
 	$mdDialog: any;
 	$mdMedia: any;
+  $cookies: any;
 	login: any = {};
 	ready: boolean = true;
 	Auth: any;
@@ -34,12 +35,13 @@ export class ListComponent extends Base{
   busy = false;
 
   /*@ngInject*/
-  constructor($rootScope, $http, $location, $mdDialog, $mdMedia, Auth, angularGridInstance) {
+  constructor($rootScope, $http, $location, $mdDialog, $mdMedia, $cookies, Auth, angularGridInstance) {
     super($rootScope);
     this.$http = $http;
     this.$location = $location;
     this.$mdDialog = $mdDialog;
     this.$mdMedia = $mdMedia;
+    this.$cookies = $cookies;
 	  this.Auth = Auth;
     this.angularGridInstance = angularGridInstance;
 	  this.$rootScope = $rootScope;
@@ -101,6 +103,13 @@ export class ListComponent extends Base{
   }
 
   loadMovieInfo = function(movie){
+
+    //save movie meta data as a cookie
+    var movieMetaData = {"list_id":0, "status":""};
+    movieMetaData.list_id = movie.list_id;
+    movieMetaData.status = "In collection";
+    this.$cookies.put('mMeta',JSON.stringify(movieMetaData));
+
     this.$location.path('/movie/'+movie.mdb_id);
   }
 

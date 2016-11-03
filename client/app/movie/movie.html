@@ -19,7 +19,7 @@
             <div layout="column" flex="100" flex-gt-sm="35">
                 <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
                 <div style="margin-top: 5%;" class="list-number-badge">
-                    <p class="lobster-style">21</p>
+                    <p class="lobster-style">{{mic.movieMetaData.list_id}}</p>
                 </div> 
             </div>
             <div class="content" flex="100" flex-gt-sm="65">
@@ -31,6 +31,12 @@
                 <p class="raleway-style">{{mic.movie.info.director}}</p>
             </div>
         </div>
+        <h1 style="font-size: 36px;" class="lobster-style">Status</h1>
+    </md-content>
+    <div class="status-banner" layout="row" layout-align="center center">
+        <h2 class="lobster-style">{{mic.movieMetaData.status}}</h2>
+    </div>
+    <md-content class="padded-container-small">
         <h1 style="font-size: 36px;" class="lobster-style">Cast</h1>
         <div class="cast-big" layout="column" layout-gt-sm="row">
             <div flex></div>
@@ -49,11 +55,7 @@
             </div>
             <div flex></div>
         </div>
-        <h1 style="font-size: 36px;" class="lobster-style">Status</h1>
     </md-content>
-    <div class="status-banner" layout="row" layout-align="center center">
-        <h2 class="lobster-style">In collection</h2>
-    </div>
     <md-content class="padded-container-small">
         <h1 style="font-size: 36px;" class="lobster-style">Genres</h1>
         <div class="cast-big" layout="column" layout-gt-sm="row">
@@ -82,7 +84,7 @@
             <div layout="column" flex="100" flex-md="40">
                 <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
                 <div style="margin-top: 5%;" class="list-number-badge">
-                    <p class="lobster-style">21</p>
+                    <p class="lobster-style">{{mic.movieMetaData.list_id}}</p>
                 </div> 
             </div>
             <div class="content" flex="100"flex-md="60">
@@ -94,6 +96,14 @@
                 <p class="raleway-style">{{mic.movie.info.director}}</p>
             </div>
         </div>
+    </md-content>
+    <md-content class="padded-container-md">
+        <h1 class="lobster-style">Status</h1>
+    </md-content>
+    <div class="status-banner" layout="row" layout-align="center center">
+        <h2 class="lobster-style">{{mic.movieMetaData.status}}</h2>
+    </div>
+    <md-content class="padded-container-md">
         <h1 class="lobster-style">Cast</h1>
     </md-content>
     <md-content>
@@ -109,12 +119,6 @@
             </div>
         </div>
     </md-content>
-    <md-content class="padded-container-md">
-        <h1 class="lobster-style">Status</h1>
-    </md-content>
-    <div class="status-banner" layout="row" layout-align="center center">
-        <h2 class="lobster-style">In collection</h2>
-    </div>
     <md-content class="padded-container-md">
         <h1 class="lobster-style">Genres</h1>
         <div class="cast-big" layout="column" layout-gt-sm="row">
