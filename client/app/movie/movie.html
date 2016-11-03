@@ -36,16 +36,14 @@
             <div flex></div>
             <div ng-repeat="cast in mic.movie.credits.fewTopBilledCast">
                 <div class="cast-card-big" layout-align="center center">
-                    <div layout="column" layout-gt-sm="row">
-                        <div class="offset" hide-gt-sm></div>
-                        <div style="margin-top:10%;">
+                    <div layout="column" layout-align="center center" layout-gt-sm="row">
+                        <div>
                             <div class="hvr-underline-from-center cast-portait-big">
                                 <img ng-src="{{mic.completeImagePath(cast.profile_path)}}" alt="Washed Out">
                             </div>
                             <div style="font-size: 20px;" class="lobster-style">{{cast.character}}</div>
                             <div class="raleway-style">{{cast.name}}</div>
                         </div>
-                        <div flex="100"></div>
                     </div>
                 </div>
             </div>
@@ -56,6 +54,25 @@
     <div class="status-banner" layout="row" layout-align="center center">
         <h2 class="lobster-style">In collection</h2>
     </div>
+    <md-content class="padded-container-small">
+        <h1 style="font-size: 36px;" class="lobster-style">Genres</h1>
+        <div class="cast-big" layout="column" layout-gt-sm="row">
+            <div flex></div>
+            <div ng-repeat="genre in mic.movie.info.genres">
+                <div class="cast-card-big" layout-align="center center">
+                    <div layout="column" layout-align="center center" layout-gt-sm="row">
+                        <div>
+                            <div class="genre-portait">
+                                <img style="margin-top: 14px;" ng-src="{{mic.getGenreResource(genre.id)}}" alt="Washed Out">
+                            </div>
+                            <div style="font-size: 20px;" class="lobster-style">{{genre.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div flex></div>
+        </div>
+    </md-content>
 </div>
 
 <!--A copy of the layout rigged to show up on tablets. There must be another way of doing this-->
@@ -98,4 +115,23 @@
     <div class="status-banner" layout="row" layout-align="center center">
         <h2 class="lobster-style">In collection</h2>
     </div>
+    <md-content class="padded-container-md">
+        <h1 class="lobster-style">Genres</h1>
+        <div class="cast-big" layout="column" layout-gt-sm="row">
+            <div flex></div>
+            <div ng-repeat="genre in mic.movie.info.genres">
+                <div class="cast-card" layout-align="center center">
+                    <div layout="column" layout-align="center center" layout-gt-sm="row">
+                        <div>
+                            <div class="genre-portait">
+                                <img style="margin-top: 14px;" ng-src="{{mic.getGenreResource(genre.id)}}" alt="Washed Out">
+                            </div>
+                            <div style="font-size: 20px;" class="lobster-style">{{genre.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div flex></div>
+        </div>
+    </md-content>
 </div>

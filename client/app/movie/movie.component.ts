@@ -72,6 +72,10 @@ export class MovieInfoComponent extends Base{
     }
   }
 
+  getGenreResource = function(id){
+    return '../../assets/images/genres/' + id + '.png';
+  }
+
 
 }
 
