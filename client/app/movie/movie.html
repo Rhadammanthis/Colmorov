@@ -16,8 +16,11 @@
 <div hide-md>
     <md-content class="padded-container-small" style="margin-top: 5%;">
         <div layout="column" layout-gt-sm="row">
-            <div flex="100" flex-gt-sm="35">
+            <div layout="column" flex="100" flex-gt-sm="35">
                 <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
+                <div style="margin-top: 5%;" class="list-number-badge">
+                    <p class="lobster-style">21</p>
+                </div> 
             </div>
             <div class="content" flex="100" flex-gt-sm="65">
                 <h1 class="lobster-style">{{mic.movie.info.original_title}}</h1>
@@ -39,7 +42,7 @@
                             <div class="hvr-underline-from-center cast-portait-big">
                                 <img ng-src="{{mic.completeImagePath(cast.profile_path)}}" alt="Washed Out">
                             </div>
-                            <div class="lobster-style">{{cast.character}}</div>
+                            <div style="font-size: 20px;" class="lobster-style">{{cast.character}}</div>
                             <div class="raleway-style">{{cast.name}}</div>
                         </div>
                         <div flex="100"></div>
@@ -48,15 +51,22 @@
             </div>
             <div flex></div>
         </div>
+        <h1 style="font-size: 36px;" class="lobster-style">Status</h1>
     </md-content>
+    <div class="status-banner" layout="row" layout-align="center center">
+        <h2 class="lobster-style">In collection</h2>
+    </div>
 </div>
 
 <!--A copy of the layout rigged to show up on tablets. There must be another way of doing this-->
 <div hide show-md>
     <md-content class="padded-container-md" style="margin-top: 5%;">
         <div layout="column" layout-gt-sm="row">
-            <div flex="100" flex-md="40">
+            <div layout="column" flex="100" flex-md="40">
                 <img ng-src="{{mic.completeImagePath(mic.movie.info.poster_path)}}" style="width: 100%;" alt="Washed Out">
+                <div style="margin-top: 5%;" class="list-number-badge">
+                    <p class="lobster-style">21</p>
+                </div> 
             </div>
             <div class="content" flex="100"flex-md="60">
                 <h1 class="lobster-style">{{mic.movie.info.original_title}}</h1>
@@ -76,12 +86,16 @@
                     <div class="hvr-underline-from-center cast-portait">
                         <img ng-src="{{mic.completeImagePath(cast.profile_path)}}" alt="Washed Out">
                     </div>
-                    <div class="lobster-style">{{cast.character}}</div>
+                    <div style="font-size: 20px;" class="lobster-style">{{cast.character}}</div>
                     <div class="raleway-style">{{cast.name}}</div>
                 </div>
             </div>
         </div>
     </md-content>
+    <md-content class="padded-container-md">
+        <h1 class="lobster-style">Status</h1>
+    </md-content>
+    <div class="status-banner" layout="row" layout-align="center center">
+        <h2 class="lobster-style">In collection</h2>
+    </div>
 </div>
-    
-</md-content>

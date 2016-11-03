@@ -25,9 +25,12 @@ export class MovieInfoComponent extends Base{
   }
 
   $onInit(){
+    this.$window.scrollTo(0, 0);
     this.setToolbarMode(2);
     console.log('onInit');
     this.id = this.$routeParams.id;
+
+    console.log("Id: " + this.id);
 
     var _this = this;
     var url = this.getMovieInfoURL(this.id);
