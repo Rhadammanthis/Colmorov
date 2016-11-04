@@ -13,18 +13,22 @@ export class MovieInfoComponent extends Base{
   $routeParams = null;
   $window = null;
   $cookies = null;
+  $timeout = null;
 
   id;
   movie = {"info":[],"credits":[]};
   movieMetaData = {};
 
-  constructor($rootScope, $http, $location, $routeParams, $window, $cookies, Auth) {
+  ready: boolean = false;
+
+  constructor($rootScope, $http, $location, $routeParams, $window, $cookies, $timeout, Auth) {
     super($rootScope);
     this.$http = $http;
     this.$location = $location;
     this.$routeParams = $routeParams;
     this.$window = $window;
     this.$cookies = $cookies;
+    this.$timeout = $timeout;
   }
 
   $onInit(){
@@ -33,12 +37,13 @@ export class MovieInfoComponent extends Base{
 
     this.setToolbarMode(2);
 
+    console.log(this.$window.navigator.language || this.$window.navigator.userLanguage);
+
     //retrieve movie meta data from cookies
     this.movieMetaData = JSON.parse(this.$cookies.get('mMeta'));
     console.log(this.movieMetaData);
 
     this.id = this.$routeParams.id;
-
     var _this = this;
     var url = this.getMovieInfoURL(this.id);
 
@@ -51,8 +56,34 @@ export class MovieInfoComponent extends Base{
         _this.movie.credits = result.data;
         _this.searchForDirector();
         _this.sortTopBilledCast();
+        _this.ready = true;
       });
 
+    }, function errorCallback(response) {
+
+      console.log('Error');
+      console.log(response);
+      if(response.data.status_code == 25){
+        _this.$timeout(function(){
+          console.log('after 5 seconds');
+
+          var url = _this.getMovieInfoURL(_this.id);
+          _this.$http.get(url, null).then(function (result) {
+
+            _this.movie.info = result.data;
+            _this.$window.document.title = result.data.original_title + ' — Colmorov';
+            url = _this.getMovieCreditsURL(_this.id);
+
+            _this.$http.get(url, null).then(function (result) {
+
+              _this.movie.credits = result.data;
+              _this.searchForDirector();
+              _this.sortTopBilledCast();
+              _this.ready = true;
+            });
+          });
+        }, 5000);
+      }
     });   
   }
 

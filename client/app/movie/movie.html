@@ -12,8 +12,11 @@
 
     <!--<div id="backdrop" style="background-position: center -55px; background-image: url({{mic.completeImagePath(mic.movieInfo.backdrop_path)}})" >
     <div class="backdrop-fade backdrop-fade-image">-->
+<div ng-if="!mic.ready" layout="row" layout-align="center center">
+    <md-progress-circular class="md-primary" ng-disabled="!mic.ready" md-diameter="96"></md-progress-circular>
+</div>
 
-<div hide-md>
+<div ng-if="mic.ready" hide-md>
     <md-content class="padded-container-small" style="margin-top: 5%;">
         <div layout="column" layout-gt-sm="row">
             <div layout="column" flex="100" flex-gt-sm="35">
@@ -78,7 +81,7 @@
 </div>
 
 <!--A copy of the layout rigged to show up on tablets. There must be another way of doing this-->
-<div hide show-md>
+<div ng-if="mic.ready" hide show-md>
     <md-content class="padded-container-md" style="margin-top: 5%;">
         <div layout="column" layout-gt-sm="row">
             <div layout="column" flex="100" flex-md="40">
