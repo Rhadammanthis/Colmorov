@@ -68,7 +68,7 @@ export default class Base{
     }
 
     public getMovieInfoURL(id){
-        return 'http://api.themoviedb.org/3/movie/' + id + '?api_key=531aec356bbd54359474847e57c79986';
+        return 'http://api.themoviedb.org/3/movie/' + id + '?api_key=531aec356bbd54359474847e57c79986&append_to_response=credits,videos';
     }
 
     public getMovieCreditsURL(id){

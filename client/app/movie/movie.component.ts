@@ -15,13 +15,15 @@ export class MovieInfoComponent extends Base{
   $cookies = null;
   $timeout = null;
 
-  id;
-  movie = {"info":[],"credits":[]};
+  movie = {"info":[],"credits":[],"videos":[],"trailer_id":""};
   movieMetaData = {};
 
+  youtubeEmbedUtils;
+  id;
   ready: boolean = false;
+  trailer;
 
-  constructor($rootScope, $http, $location, $routeParams, $window, $cookies, $timeout, Auth) {
+  constructor($rootScope, $http, $location, $routeParams, $window, $cookies, $timeout, Auth, youtubeEmbedUtils) {
     super($rootScope);
     this.$http = $http;
     this.$location = $location;
@@ -29,6 +31,8 @@ export class MovieInfoComponent extends Base{
     this.$window = $window;
     this.$cookies = $cookies;
     this.$timeout = $timeout;
+
+    this.youtubeEmbedUtils = youtubeEmbedUtils;
   }
 
   $onInit(){
@@ -36,6 +40,7 @@ export class MovieInfoComponent extends Base{
     this.$window.scrollTo(0, 0);
 
     this.setToolbarMode(2);
+    this.trailer = 'sMKoNBRZM1M';
 
     console.log(this.$window.navigator.language || this.$window.navigator.userLanguage);
 
@@ -49,15 +54,13 @@ export class MovieInfoComponent extends Base{
 
     this.$http.get(url, null).then(function (result) {
       _this.movie.info = result.data;
+      _this.movie.credits = result.data.credits;
+      _this.movie.videos = result.data.videos;
+
       _this.$window.document.title = result.data.original_title + ' — Colmorov';
-      url = _this.getMovieCreditsURL(_this.id);
-      
-      _this.$http.get(url, null).then(function (result) {
-        _this.movie.credits = result.data;
-        _this.searchForDirector();
-        _this.sortTopBilledCast();
-        _this.ready = true;
-      });
+
+      _this.processRawMovieData();
+      _this.ready = true;
 
     }, function errorCallback(response) {
 
@@ -69,22 +72,25 @@ export class MovieInfoComponent extends Base{
 
           var url = _this.getMovieInfoURL(_this.id);
           _this.$http.get(url, null).then(function (result) {
-
             _this.movie.info = result.data;
+            _this.movie.credits = result.data.credits;
+            _this.movie.videos = result.data.videos;
+
             _this.$window.document.title = result.data.original_title + ' — Colmorov';
-            url = _this.getMovieCreditsURL(_this.id);
 
-            _this.$http.get(url, null).then(function (result) {
+            _this.processRawMovieData();
+            _this.ready = true;
 
-              _this.movie.credits = result.data;
-              _this.searchForDirector();
-              _this.sortTopBilledCast();
-              _this.ready = true;
-            });
           });
-        }, 5000);
+        }, 10000);
       }
     });   
+  }
+
+  processRawMovieData = function(){
+    this.searchForDirector();
+    this.sortTopBilledCast();
+    this.searchMostPopularVideo();
   }
 
   searchForDirector = function(){
@@ -108,6 +114,21 @@ export class MovieInfoComponent extends Base{
         _this.movie.credits.fewTopBilledCast.push(_this.movie.credits.cast[i]);
       }
     }
+  }
+
+  searchMostPopularVideo = function(){
+    
+    console.log(this.movie.videos);
+    if( this.movie.videos.results.length>1)
+      this.movie.trailer_id = this.movie.videos.results[1].key;
+    else
+      this.movie.trailer_id = this.movie.videos.results[0].key;
+    // var _this = this;
+    //  console.log(this.movie.videos);
+    // for(var i in _this.movie.videos.results){
+    //   console.log(_this.movie.videos.results[i].key);
+    //   console.log(_this.youtubeEmbedUtils.getTimeFromURL('https://www.youtube.com/watch?v='+_this.movie.videos.results[i].key));
+    // }
   }
 
   getGenreResource = function(id){

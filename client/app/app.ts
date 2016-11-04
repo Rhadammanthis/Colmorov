@@ -12,6 +12,7 @@ const ngResponsiveParallax = require('angular-responsive-parallax')
 const ngTable = require('angular-material-data-table');
 const angularGrid = require('angularGrid');
 const ngInfiniteScroll = require('ng-infinite-scroll');
+const ngYouTubeEmbeded = require('angular-youtube-embed');
 
 // const ngMessages = require('angular-messages');
 // import ngValidationMatch from 'angular-validation-match';
@@ -48,6 +49,7 @@ angular.module('colmorovApp', [
   ngResponsiveParallax,
   angularGrid,
   ngInfiniteScroll,
+  ngYouTubeEmbeded,
 
   _Auth,
   navbar,

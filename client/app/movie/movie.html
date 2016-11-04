@@ -13,7 +13,7 @@
     <!--<div id="backdrop" style="background-position: center -55px; background-image: url({{mic.completeImagePath(mic.movieInfo.backdrop_path)}})" >
     <div class="backdrop-fade backdrop-fade-image">-->
 <div ng-if="!mic.ready" layout="row" layout-align="center center">
-    <md-progress-circular class="md-primary" ng-disabled="!mic.ready" md-diameter="96"></md-progress-circular>
+    <md-progress-circular md-mode="indeterminate" class="md-primary" md-diameter="96"></md-progress-circular>
 </div>
 
 <div ng-if="mic.ready" hide-md>
@@ -77,6 +77,10 @@
             </div>
             <div flex></div>
         </div>
+        <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
+        <div layout-align="center center" layout-gt-sm="row">
+            <youtube-video video-id="mic.movie.trailer_id"></youtube-video>
+        </div>
     </md-content>
 </div>
 
@@ -139,6 +143,10 @@
                 </div>
             </div>
             <div flex></div>
+        </div>
+        <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
+        <div layout-align="center center" layout-gt-sm="row">
+            <youtube-video video-id="mic.movie.trailer_id"></youtube-video>
         </div>
     </md-content>
 </div>
