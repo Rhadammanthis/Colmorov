@@ -28,7 +28,7 @@ class HomeController extends Base{
     {
         console.log('init')
         if(this.Auth.getUser()!==null&&this.Auth.getUser()!==undefined)
-            this.$location.path('/profile');
+            this.$location.path('/list');
         else
             this.setToolbarMode(0);
     }

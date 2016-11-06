@@ -39,8 +39,7 @@ export class MovieInfoComponent extends Base{
     //scroll to top
     this.$window.scrollTo(0, 0);
 
-    this.setToolbarMode(2);
-    this.trailer = 'sMKoNBRZM1M';
+    this.setToolbarMode(1);
 
     console.log(this.$window.navigator.language || this.$window.navigator.userLanguage);
 
@@ -91,6 +90,8 @@ export class MovieInfoComponent extends Base{
     this.searchForDirector();
     this.sortTopBilledCast();
     this.searchMostPopularVideo();
+
+    this.setTitle(this.movie.info.original_title);
   }
 
   searchForDirector = function(){
@@ -120,7 +121,7 @@ export class MovieInfoComponent extends Base{
     
     console.log(this.movie.videos);
     if( this.movie.videos.results.length>1)
-      this.movie.trailer_id = this.movie.videos.results[1].key;
+      this.movie.trailer_id = this.movie.videos.results[0].key;
     else
       this.movie.trailer_id = this.movie.videos.results[0].key;
     // var _this = this;

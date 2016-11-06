@@ -57,6 +57,7 @@ export class ListComponent extends Base{
 
   $onInit(){
       this.setToolbarMode(2);
+      this.setTitle("Colmorov — Colection");
       var _this = this;
 
       this.loadImages().then(function(data){
