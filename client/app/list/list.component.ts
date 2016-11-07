@@ -201,6 +201,13 @@ export class ListComponent extends Base{
       this.fetchItems(this.movieTitle);
     }
 
+    completePosterUrl = function(path: string){
+        if(path != null)
+            return "https://image.tmdb.org/t/p/w600/" + path;
+        else
+            return "http://www.cineart.be/Documents/Document/Large/20120510153359-NoPosterAvailable.jpg";
+    }
+
     select = function(movie){
 
       var listId = this.listTotal + 1;

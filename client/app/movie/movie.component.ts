@@ -96,12 +96,14 @@ export class MovieInfoComponent extends Base{
 
   searchForDirector = function(){
     var _this = this;
+    var director = "";
     if(this.movie.credits){
       for(var i in _this.movie.credits.crew){
         if(_this.movie.credits.crew[i].department == "Directing")
           if(_this.movie.credits.crew[i].job == "Director")
-            _this.movie.info.director = _this.movie.credits.crew[i].name;
+            director  += _this.movie.credits.crew[i].name + ' & ';
       }
+      _this.movie.info.director = director.substring(0, director.length - 2);
     }
   }
 

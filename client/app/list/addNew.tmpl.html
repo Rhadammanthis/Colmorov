@@ -30,7 +30,7 @@
             <div ng-repeat='movie in anc.movies' ng-click="anc.select(movie)">
 
               <div class="card" layout="row">
-                <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}"  alt="Avatar" style="min-width:100px; min-height:150px; max-width:100px; max-height:150px;">
+                <img src="{{anc.completePosterUrl(movie.poster_path)}}" alt="Avatar" style="min-width:100px; min-height:150px; max-width:100px; max-height:150px;">
                 <div class="card-content">
                   <h2 style="font-size: 1em;">{{movie.original_title}}</h2>
                   <p style="margin-top:3px;">{{movie.overview}}</p>

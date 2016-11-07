@@ -64,7 +64,7 @@ export default class Base{
         if(path != null)
             return "https://image.tmdb.org/t/p/w600/" + path;
         else
-            return "http://www.tea-tron.com/antorodriguez/blog/wp-content/uploads/2016/04/lowRes1.jpeg";
+            return "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
     }
 
     public getMovieInfoURL(id){
