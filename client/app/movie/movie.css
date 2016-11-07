@@ -71,6 +71,15 @@
     text-align: center;
 }
 
+.cast-card-big-mobile{
+    width: 188px;
+    margin-left: 7px;
+    padding-left: 100%;
+    transform: translate(-50%, 0%);
+    margin-right: 7px;
+    text-align: center;
+}
+
 .cast-portait-big{
     width: 130px;
     height: 130px;
