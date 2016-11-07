@@ -112,9 +112,11 @@ export class MovieInfoComponent extends Base{
     this.movie.credits.manyTopBilledCast = [];
     this.movie.credits.fewTopBilledCast = [];
     for(var i = 0; i < 11; i++){
-      _this.movie.credits.manyTopBilledCast.push(_this.movie.credits.cast[i]);
+      if(i < _this.movie.credits.cast.length)
+        _this.movie.credits.manyTopBilledCast.push(_this.movie.credits.cast[i]);
       if(i < 5){
-        _this.movie.credits.fewTopBilledCast.push(_this.movie.credits.cast[i]);
+        if(i < _this.movie.credits.cast.length)
+          _this.movie.credits.fewTopBilledCast.push(_this.movie.credits.cast[i]);
       }
     }
   }
