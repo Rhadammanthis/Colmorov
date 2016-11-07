@@ -15,7 +15,7 @@ export class MovieInfoComponent extends Base{
   $cookies = null;
   $timeout = null;
 
-  movie = {"info":[],"credits":[],"videos":[],"trailer_id":""};
+  movie = {"info":[],"credits":[],"videos":[], "most_popular_video":""};
   movieMetaData = {};
 
   youtubeEmbedUtils;
@@ -119,17 +119,29 @@ export class MovieInfoComponent extends Base{
 
   searchMostPopularVideo = function(){
     
-    console.log(this.movie.videos);
-    if( this.movie.videos.results.length>1)
-      this.movie.trailer_id = this.movie.videos.results[0].key;
-    else
-      this.movie.trailer_id = this.movie.videos.results[0].key;
-    // var _this = this;
-    //  console.log(this.movie.videos);
-    // for(var i in _this.movie.videos.results){
-    //   console.log(_this.movie.videos.results[i].key);
-    //   console.log(_this.youtubeEmbedUtils.getTimeFromURL('https://www.youtube.com/watch?v='+_this.movie.videos.results[i].key));
-    // }
+    // console.log(this.movie.videos);
+    // if( this.movie.videos.results.length>1)
+    //   this.movie.trailer_id = this.movie.videos.results[0].key;
+    // else
+    //   this.movie.trailer_id = this.movie.videos.results[0].key;
+    var _this = this;
+    var videoIds = "";
+    var videoViews = 0;
+
+    for(var i in _this.movie.videos.results){
+      videoIds += _this.movie.videos.results[i].key + ',';
+    }
+
+    var urlVideoQuery = "https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=" + videoIds + "&key=AIzaSyCTfYqRsHkYOOcSPK6dgOmhcNyDZ-UJ3x4";
+    console.log(urlVideoQuery);
+
+    this.$http.get(urlVideoQuery, null).then(function (result) {
+      for(var i in result.data.items){
+        if(result.data.items[i].statistics.viewCount > videoViews)
+          videoViews = result.data.items[i].statistics.viewCount
+          _this.movie.most_popular_video = result.data.items[i].id;
+      }
+    });
   }
 
   getGenreResource = function(id){
