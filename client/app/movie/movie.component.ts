@@ -22,6 +22,7 @@ export class MovieInfoComponent extends Base{
   id;
   ready: boolean = false;
   trailer;
+  shoudlShowTrailer = true;
 
   constructor($rootScope, $http, $location, $routeParams, $window, $cookies, $timeout, Auth, youtubeEmbedUtils) {
     super($rootScope);
@@ -140,10 +141,14 @@ export class MovieInfoComponent extends Base{
     console.log(urlVideoQuery);
 
     this.$http.get(urlVideoQuery, null).then(function (result) {
+
+      _this.shoudlShowTrailer = (result.data.items.length > 0);
+
       for(var i in result.data.items){
-        if(result.data.items[i].statistics.viewCount > videoViews)
+        if(parseInt(result.data.items[i].statistics.viewCount, 10) > videoViews){
           videoViews = result.data.items[i].statistics.viewCount
           _this.movie.most_popular_video = result.data.items[i].id;
+        }
       }
     });
   }

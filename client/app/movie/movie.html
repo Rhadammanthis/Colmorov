@@ -12,7 +12,7 @@
 
     <!--<div id="backdrop" style="background-position: center -55px; background-image: url({{mic.completeImagePath(mic.movieInfo.backdrop_path)}})" >
     <div class="backdrop-fade backdrop-fade-image">-->
-<div style="min-height: 100%;">
+<div style="top: 0; bottom: 0">
     <div ng-if="!mic.ready" layout="row" layout-align="center center">
         <md-progress-circular md-mode="indeterminate" class="md-primary" md-diameter="96"></md-progress-circular>
     </div>
@@ -116,11 +116,12 @@
             </div>
             <div flex></div>
         </div>
-        <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
-        <div layout-align="center center" layout-gt-sm="row">
-            <youtube-video hide show-gt-sm video-id="mic.movie.most_popular_video"></youtube-video>
-            <youtube-video style="    margin-left: 50%;
-    transform: translate(-50%, 0%);" hide-gt-sm player-width="'300px'" player-height="'200px'" video-id="mic.movie.most_popular_video"></youtube-video>
+        <div ng-if="mic.shoudlShowTrailer">
+            <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
+            <div layout-align="center center" layout-gt-sm="row">
+                <youtube-video hide show-gt-sm video-id="mic.movie.most_popular_video"></youtube-video>
+                <youtube-video style="margin-left: 50%; transform: translate(-50%, 0%);" hide-gt-sm player-width="'300px'" player-height="'200px'" video-id="mic.movie.most_popular_video"></youtube-video>
+            </div>
         </div>
     </md-content>
 </div>
@@ -185,9 +186,11 @@
             </div>
             <div flex></div>
         </div>
-        <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
-        <div layout-align="center center" layout-gt-sm="row">
-            <youtube-video player-width="'450px'" player-height="'300px'" video-id="mic.movie.most_popular_video"></youtube-video>
+        <div ng-if="mic.shoudlShowTrailer">
+            <h1 style="font-size: 36px;" class="lobster-style">Trailer</h1>
+            <div layout-align="center center" layout-gt-sm="row">
+                <youtube-video player-width="'450px'" player-height="'300px'" video-id="mic.movie.most_popular_video"></youtube-video>
+            </div>
         </div>
     </md-content>
 </div>

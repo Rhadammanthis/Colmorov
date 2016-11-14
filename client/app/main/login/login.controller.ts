@@ -29,7 +29,7 @@ class LogInController extends Base{
         this.Auth = Auth;
         this.Crypto = Crypto;
 
-        this.setTitle('Sign in!');
+        this.setTitle('Go Back');
 
     }
 

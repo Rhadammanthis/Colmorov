@@ -1,7 +1,10 @@
-<div id=back>
+<div layout="column">
+    <div flex="33" style="height: 25%;">
+    </div>
+<div style="height: 100%;" layout="column" layout-align="center center"> 
     <md-card id=card_login_registro md-whiteframe='24'>
             <div id=logo_bar_container>
-                <img class=md-card-image id=logo_bar ng-src='assets/images/yunius.png'  alt='Logo'/>
+                <p style="font-size: 1.5em;" class="lobster-style">Log in!</p>
             </div>
             <md-card-content id=card_login_container>
                 <form ng-submit='lic.logUserIn($event)' name="formregistro">
@@ -45,4 +48,7 @@
             </form>
         </md-card-content>
     </md-card>
+</div>
+<div flex>
+    </div>
 </div>

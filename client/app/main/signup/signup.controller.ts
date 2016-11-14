@@ -32,7 +32,7 @@ class SignUpController extends Base{
         this.Crypto = Crypto;
         this.$cookies = $cookies;
 
-        this.setTitle('Create a new account!');
+        this.setTitle('Go Back');
 
     }
 

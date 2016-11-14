@@ -31,11 +31,14 @@
 
               <div class="card" layout="row">
                 <img src="{{anc.completePosterUrl(movie.poster_path)}}" alt="Avatar" style="min-width:100px; min-height:150px; max-width:100px; max-height:150px;">
-                <div class="card-content">
-                  <h2 style="font-size: 1em;">{{movie.original_title}}</h2>
-                  <p style="margin-top:3px;">{{movie.overview}}</p>
+                <div hide show-gt-sm class="card-content">
+                  <h2 class="lobster-style" style="font-size: 1em;">{{movie.original_title}}</h2>
+                  <p class="raleway-style" style="margin-top:3px;">{{movie.overview}}</p>
                 </div>
-              </div>
+                <div class="card-content" hide-gt-sm layout="row" layout-align="start center">
+                  <h2 class="lobster-style" style="font-size: 1.5em;">{{movie.original_title}}</h2>
+                </div>
+            </div>
 
             </div>
           </div>
@@ -55,3 +58,15 @@
     </md-dialog-actions>
   </form>
 </md-dialog>
+
+
+              <!--<div class="card" layout="row">
+                <img src="{{anc.completePosterUrl(movie.poster_path)}}" alt="Avatar" style="min-width:100px; min-height:150px; max-width:100px; max-height:150px;">
+                <div hide show-gt-sm class="card-content">
+                  <h2 class="lobster-style" style="font-size: 1em;">{{movie.original_title}}</h2>
+                  <p class="raleway-style" style="margin-top:3px;">{{movie.overview}}</p>
+                </div>
+                <div class="card-content" hide-gt-sm layout="row" layout-align="start center">
+                  <h2 class="lobster-style" style="font-size: 1.5em;">{{movie.original_title}}</h2>
+                </div>
+            </div>-->
