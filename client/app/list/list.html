@@ -8,13 +8,33 @@
         </div>
     </div>
 
-    <div class="fixed-pos" layout="row">
+    <div scroll ng-hide="ltc.checked" class="animate-show fixed-pos" layout="row">
         <div flex></div>
-        <md-button style="margin-right:3%;" ng-click="ltc.addNewMovieDialog(ev)" class="md-fab" aria-label="Use Android">
+        <md-button style="margin-right:3%;" ng-click="ltc.addNewMovieDialog(ev)" class="md-fab md-primary" aria-label="Use Android">
             <md-icon md-svg-src="../../assets/icons/ic_add_white_24px.svg"></md-icon>
         </md-button>
     </div>
 </div>
 
+
+      <!--<button ng-click="ltc.showme = !ltc.showme">Show or Hide</button>
+      <div ng-show="ltc.showme" class="boxme">
+        <h2>Box to Show and Hide</h2>
+        <p>Show and hide this box using animate.css the angularway!</p>
+      </div>
+
+Click me: <input type="checkbox" ng-model="ltc.checked" aria-label="Toggle ngHide"><br/>-->
+<!--<div>
+  Show:
+  <div class="check-element animate-show" ng-show="ltc.checked">
+    <span class="glyphicon glyphicon-thumbs-up"></span> I show up when your checkbox is checked.
+  </div>
+</div>
+<div>
+  Hide:
+  <div class="check-element animate-show" ng-hide="ltc.checked">
+    <span class="glyphicon glyphicon-thumbs-down"></span> I hide when your checkbox is checked.
+  </div>
+</div>-->
 
 

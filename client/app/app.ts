@@ -6,6 +6,7 @@ const ngResource = require('angular-resource');
 const ngSanitize = require('angular-sanitize');
 import 'angular-socket-io';
 const ngRoute = require('angular-route');
+const ngAnimate = require('angular-animate');
 const ngMaterial = require('angular-material');
 const ngAngularLoadingbar = require('angular-loading-bar')
 const ngResponsiveParallax = require('angular-responsive-parallax')
@@ -43,6 +44,7 @@ angular.module('colmorovApp', [
   'btford.socket-io',
 
   ngRoute,
+  ngAnimate,
   ngMaterial,
   ngTable,
   ngAngularLoadingbar,
@@ -153,6 +155,21 @@ angular.module('colmorovApp', [
     this.getSetCount = function() {
           return this.userData.yearSetCount;
     };
+  })
+  .directive("scroll", function ($window) {
+      return function(scope, element, attrs) {
+            var offset = 0;
+            angular.element($window).bind("scroll", function() {
+                  if(this.pageYOffset > offset + 100){
+                        offset = this.pageYOffset;
+                        element.addClass('ng-hide')
+                  }
+                  else if(this.pageYOffset < offset){
+                        element.removeClass('ng-hide')
+                        offset -= 100;
+                  }
+            });
+      };
   })
   .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')

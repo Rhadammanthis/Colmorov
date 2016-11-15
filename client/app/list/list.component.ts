@@ -1,6 +1,7 @@
 'use strict';
 const angular = require('angular');
 const ngRoute = require('angular-route');
+const ngAnimate = require('angular-animate');
 
 
 import routes from './list.routes';
@@ -22,6 +23,8 @@ export class ListComponent extends Base{
 
   pics;
   listTotal;
+
+  showme = false;
 
   message = "Hola";
 
@@ -221,7 +224,7 @@ export class ListComponent extends Base{
   }
 
 
-export default angular.module('colmorovApp.adminlogin', [ngRoute])
+export default angular.module('colmorovApp.adminlogin', [ngRoute, ngAnimate])
   .config(routes)
   .component('list', {
     template: require('./list.html'),

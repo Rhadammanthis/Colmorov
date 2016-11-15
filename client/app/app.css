@@ -73,6 +73,60 @@ table.md-table.md-row-select td.md-cell:first-child, table.md-table.md-row-selec
   right: 0;
 }
 
+.boxme.ng-hide-add {
+  /*animation: fadeOutLeftBig 0.4s;*/
+    -webkit-animation: fadeOutLeftBig 0.4s;
+    display: block!important;
+}
+.boxme.ng-hide-remove {
+    /*animation: fadeInLeftBig 0.4s;*/
+    -webkit-animation: fadeInLeftBig 0.4s;
+}
+
+.boxme:hover{
+  /*transform:scale(1.12);*/
+  transform: translate3d(20px, 20px, 0px);
+}
+
+.animate-show {
+  opacity: 1;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
+
+.check-element {
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
+
+.boxme{
+      background-color: red;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@-webkit-keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
