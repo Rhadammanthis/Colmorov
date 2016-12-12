@@ -15,6 +15,7 @@ var response;
 
 router.post('/add', controller.create);
 router.get('/', controller.index);
+router.get('/:page', controller.paginated);
 router.delete('/:id', controller.destroy);
 
 module.exports = router;

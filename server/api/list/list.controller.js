@@ -17,6 +17,9 @@ import List from './list.model';
 var cast = false;
 var crew = false;
 
+var page = 0;
+var itemsPerPage = 20;
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -79,23 +82,50 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+// Gets a paginated list of Movies
+export function paginated(req, res) {
+
+  cast = req.query.cast || false;
+  crew = req.query.crew || false;
+
+  page = req.params.page;
+
+  console.log('Cast in List = ' + cast);
+  console.log('Crew in List = ' + crew);
+
+  return List.find().exec()
+    .then(respondWithResultArray(res))
+    .catch(handleError(res));
+}
+
 function respondWithResultArray(res, statusCode) {
   statusCode = statusCode || 200;
 
-  var lCast, lCrew;
+  var lCast, lCrew, lPage, lItems;
   lCast = cast;
   lCrew = crew;
+  lPage = page;
+  lItems = itemsPerPage;
 
   return function(entity) {
     if (entity) {
       var resp = {};
       resp.id = [];
       
-      for(var i in entity){
-        var id = entity[i].mdb_id;
-        resp.id.push(id);
+      if(lPage != 0){
+        for(var i = ((lItems * lPage) - lItems); i < (lItems * lPage); i++){
+          var id = entity[i].mdb_id;
+          resp.id.push(id);
+        }
+      }
+      else{
+        for(var i in entity){
+          var id = entity[i].mdb_id;
+          resp.id.push(id);
+        }
       }
 
+      console.log('Items in resp: ' + resp.length);
       console.log(resp);
 
       var options = {

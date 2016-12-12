@@ -1,4 +1,4 @@
-<div class="padded-container">
+<div class="padded-container" style="padding-top: 2%;">
     <div class="dynamic-grid" angular-grid="ltc.pics" grid-width="180" gutter-size="20" angular-grid-id="gallery" refresh-on-img-load="true" >
         <div class="grid" data-ng-repeat="pic in ltc.pics" ng-click="ltc.loadMovieInfo(pic)">
             <img ng-src="{{pic.poster.file_path | trusted}}" class="hvr-underline-from-center grid-img" data-actual-width="{{pic.poster.width}}" data-actual-height="{{pic.poster.height}}" /> 

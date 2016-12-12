@@ -9,7 +9,7 @@ const ngRoute = require('angular-route');
 const ngAnimate = require('angular-animate');
 const ngMaterial = require('angular-material');
 const ngAngularLoadingbar = require('angular-loading-bar')
-const ngResponsiveParallax = require('angular-responsive-parallax')
+// const ngResponsiveParallax = require('angular-responsive-parallax')
 const ngTable = require('angular-material-data-table');
 const angularGrid = require('angularGrid');
 const ngInfiniteScroll = require('ng-infinite-scroll');
@@ -48,7 +48,7 @@ angular.module('colmorovApp', [
   ngMaterial,
   ngTable,
   ngAngularLoadingbar,
-  ngResponsiveParallax,
+//   ngResponsiveParallax,
   angularGrid,
   ngInfiniteScroll,
   ngYouTubeEmbeded,
