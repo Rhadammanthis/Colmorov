@@ -37,6 +37,8 @@ export class ListComponent extends Base{
   status;
   busy = false;
 
+  listPage = 1;
+
   /*@ngInject*/
   constructor($rootScope, $http, $location, $mdDialog, $mdMedia, $cookies, Auth, angularGridInstance) {
     super($rootScope);
@@ -51,7 +53,7 @@ export class ListComponent extends Base{
   }
 
   loadImages = function(){
-      return this.$http.get("api/list");
+      return this.$http.get("api/list/" + this.listPage);
   };
 
   refresh = function(){
@@ -115,6 +117,28 @@ export class ListComponent extends Base{
     this.$cookies.put('mMeta',JSON.stringify(movieMetaData));
 
     this.$location.path('/movie/'+movie.mdb_id);
+  }
+
+  loadMore = function(){
+    var _this = this;
+    this.listPage = this.listPage + 1;
+    console.log(this.listPage)
+
+    this.loadImages().then(function(data){
+
+      console.log("More movies!")
+      console.log(data.data.movies);
+      for(var i = 0; i < data.data.movies.length; i++){
+        _this.pics.push(data.data.movies[i]);
+      }
+
+      // _this.pics += data.data.movies;
+      // _this.listTotal = _this.listTotal + data.data.movies.length;
+      console.log(_this.pics);
+      _this.refresh();
+      _this.message = "Friend";
+
+    });
   }
 
 }

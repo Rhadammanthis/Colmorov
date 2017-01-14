@@ -18,7 +18,7 @@ var cast = false;
 var crew = false;
 
 var page = 0;
-var itemsPerPage = 20;
+var itemsPerPage = 24;
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -112,10 +112,12 @@ function respondWithResultArray(res, statusCode) {
       var resp = {};
       resp.id = [];
       
-      if(lPage != 0){
+      if(lPage){
         for(var i = ((lItems * lPage) - lItems); i < (lItems * lPage); i++){
-          var id = entity[i].mdb_id;
-          resp.id.push(id);
+          if(i < entity.length){
+            var id = entity[i].mdb_id;
+            resp.id.push(id);
+          }
         }
       }
       else{
@@ -140,6 +142,8 @@ function respondWithResultArray(res, statusCode) {
           var result = {};
           result.movies = [];
 
+          var listId = ((lItems * lPage) - lItems) + 1;
+
           for(var i in body){
 
             if(body[i])
@@ -152,13 +156,15 @@ function respondWithResultArray(res, statusCode) {
               item.poster.width = 1000;
               item.poster.file_path = 'https://image.tmdb.org/t/p/w600/' + body[i].poster_path;
 
-              item.list_id = entity[i].list_id;
+              item.list_id = listId;
               item.mdb_id = entity[i].mdb_id;
 
               if(cast)
                 item.cast = body[i].cast;
               if(crew)
                 item.crew = body[i].crew;
+
+              listId++;
 
               result.movies.push(item);
             }
